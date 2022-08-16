@@ -1,7 +1,7 @@
 <h1 align="center"> Financial App API </h1>
 <p align="center">
 <img src="https://img.shields.io/badge/STATUS-IN%20DEVELOPMENT-yellow"/>
-<img src="https://img.shields.io/badge/WEEK-1%20OF%204-9cf"/>
+<img src="https://img.shields.io/badge/WEEK-2%20OF%204-9cf"/>
 </p>
 
 <h2>Project Description</h2>
@@ -29,6 +29,25 @@ Tasks performed:
   - Validations and business requerimentes implemented;
   - All functions tested.
   
+  <h3><b>For Week 2 - COMPLETED</b></h3>
+
+Tasks performed:
+
+  - Created a Categoy property for expenses;
+  - DTO classes created for models and AutoMapper implemented;
+  - Inserted the following queries:
+    - List incomes and expenses by their name;
+    - List incomes and expenses of given month of a year;
+  - Created a financial summary class wich returns a JSON with the following informations of given month of a year:
+    - Total amount for incomes;
+    - Total amount for expenses;
+    - Balance;
+    - Total expenses by category;
+  - Repositories implemented;
+  - Interfaces for services and repositories created;
+  - Code refactored;
+  - Unit tests implemented for Controllers and Services.
+  
   <h2>Validations</h2>
   
   <div> All fields are required for both requests (incomes and expenses) with the following rules:<div>
@@ -36,14 +55,30 @@ Tasks performed:
   <ul>
     <li>Descriptions(names) must not exceed 30 characters;</li>
     <li>The amounts must be greater than zero;</li>
+    <li>It's not allowed to create incomes and expenses with same names in the same month;</li>
+    <li>It's not allowed to update the name of an existing income or expense if there's already another with same name in the same month;</li>
+    <li>The default category for an expense is "Others" (value 0).
   </ul>  
   </p>
-  <div> Also, it's not allowed to create incomes and expenses with same names in the same month.
-
+  </div>
+   <details>
+  <summary>Expense Categories</summary>
+   <div> The categories with the constante values associated to it are:
+   <pre>  
+        Others = 0,
+        Food = 1,
+        Health = 2,
+        Housing = 3,
+        Transportation = 4,
+        Education = 5,
+        Entertainment = 6,
+        Unforeseen = 7  
+  </pre>
+   </details>
   
   <h2>Functionalities</h2>
   <br>
-  <b><i>The same methods also applies for expenses.</b></i>
+  <b><i>The same income methods also applies for expenses.</b></i>
   
   <h3>Income Requests</h3>
   <details>
@@ -56,10 +91,19 @@ Tasks performed:
     "incomeAmount": "200.00",
     "incomeDate": "2022-07-23"  
   }
-  </pre>
-    <div>If it's sucedded, it'll return Code 201 with the id for the data.</div>
+  </pre>    
+  <div>If it's sucedded, it'll return Code 201 with the id for the data. For expense a category is specified:</div>
   <br>
+  <pre>
+  {
+    "expenseName": "Expense's Description",
+    "expenseAmount": "500.00",
+    "expenseDate": "2022-08-03"  
+    "category" : 2
+  }
+  </pre>   
   <div>If a validation requeriment is not met, it'll exhibit an error message:</div>
+  <br>
   <pre>
   {
    "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
@@ -109,17 +153,134 @@ Tasks performed:
   }
   </pre>   
   </details>
+   <details>
+  <summary>List Income By Description [GET]</summary>
+  <br>
+  <div>Checks if a given string is contained in the income's description. If there're incomes meeting the requiriment the database, it'll return successfully as     "Ok" with a list of incomes: </div>
+  <pre> 
+  Description searched: "Salary";
+  [
+    {
+      "incomeId": 1,
+      "incomeName": "Salary",
+      "incomeAmount": 2000,
+      "incomeDate": "2022-08-13T01:09:53.255"
+    },
+    {
+      "incomeId": 3,
+      "incomeName": "Salary",
+      "incomeAmount": 2000,
+      "incomeDate": "2022-07-05T01:09:53.255"
+    },
+    {
+      "incomeId": 5,
+      "incomeName": "Salary",
+      "incomeAmount": 2000,
+      "incomeDate": "2022-06-05T01:09:53.255"
+    }
+  ]
+  </pre>   
+  <div>  Otherwise it'll show a NotFound result:</div>
+    <pre> 
+  {
+    Error: response status is 404
+  }
+  </pre>
+  </details>
+   <details>
+  <summary>List Income By Month Of A Year [GET]</summary>
+  <br>
+  <div>Returns incomes of a given month of a year. If there're incomes meeting the requiriment the database, it'll return successfully as "Ok": </div>  
+  <pre> 
+  Year searched: 2022;
+  Month searched: 8;
+  [
+    {
+      "incomeId": 1,
+      "incomeName": "Salary",
+      "incomeAmount": 2000,
+      "incomeDate": "2022-08-13T01:09:53.255"
+    },
+    {
+      "incomeId": 4,
+      "incomeName": "Bank Deposit",
+      "incomeAmount": 1000,
+      "incomeDate": "2022-08-13T04:31:56.278"
+    },
+    {
+      "incomeId": 6,
+      "incomeName": "Market Share",
+      "incomeAmount": 1000,
+      "incomeDate": "2022-08-14T23:27:39.784"
+    },
+   ]
+  </pre>
+  <div>Otherwise it'll show a NotFound result: </div>
+  <pre> 
+  {
+    Error: response status is 404
+  }
+  </pre>
+  </details>
   <details>
   <summary>Update Income [PUT]</summary>
   <br>
-  <div>First it will check if the target income exists (returns NotFound if not). Then it'll check if the updated name respects the same rule as when you add the 
+  <div>First it will check if the target income exists. Then it'll check if the updated name respects the same rule as when you add the 
   income. If all criteria are met, targeted income will be updated with a NoContent response:</div>
   <pre>   
     Code 204  
-  </pre>   
+  </pre> 
+  <div>Otherwise it'll return a BadRequest if searched income is not found:</div>
+   <pre>  
+   Error: response status is 400
+    "reasons": [
+        {
+          "message": "Income not found",
+          "metadata": {}
+        }  
+     ]
+   </pre> 
+  <div>It'll also return a BadRequest if a name with same description already exists:</div>
+    <pre> 
+    Error: response status is 400
+     "reasons": [
+        {
+          "message": "Income with same name already exists in August",
+          "metadata": {}
+        }
+     ]
+   </pre> 
   </details>
    <details>
   <summary>Delete Income [DELETE]</summary>
   <br>
   <div>First it will check if the target income exists (returns NotFound if not). If so, it'll delete target income with a NoContent response. </div> 
   </details>
+   <details>
+  <summary>Month Summary [GET]</summary>
+  <br>
+  <div>It'll return the financial summary of a given month of a given year. For example:</div>
+  <pre> 
+  {
+    "TotalIncome": 11000.0,
+    "TotalExpense": 1300.0,
+    "Balance": 9700.0,
+    "ExpensesByCategory": [
+        {
+          "CategoryId": 1,
+          "TotalCategoryIdExpense": 200.0
+        },
+        {
+          "CategoryId": 4,
+          "TotalCategoryIdExpense": 400.0
+        },
+        {
+          "CategoryId": 6,  
+          "TotalCategoryIdExpense": 700.0
+        }
+    ]
+  }
+  </pre>   
+  <div>Notice a category will only be listed if it contains an expense.</div>
+  </details>
+  <details>
