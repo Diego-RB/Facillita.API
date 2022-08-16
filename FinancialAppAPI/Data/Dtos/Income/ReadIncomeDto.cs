@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FinancialAppAPI.Models
+namespace FinancialAppAPI.Data.Dtos.Income
 {
-    public class Income
+    public class ReadIncomeDto
     {
         [Key]
         [Required]
@@ -15,6 +15,5 @@ namespace FinancialAppAPI.Models
         public double IncomeAmount { get; set; }
         [Required(ErrorMessage = "Income must have a date")]
         public DateTime IncomeDate { get; set; }
-
     }
 }

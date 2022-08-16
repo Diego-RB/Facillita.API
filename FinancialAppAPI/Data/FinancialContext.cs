@@ -12,5 +12,9 @@ namespace FinancialAppAPI.Data
 
         public DbSet<Expense> Expenses { get; set; }
 
+        internal object TotalIncome(int year, int month)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

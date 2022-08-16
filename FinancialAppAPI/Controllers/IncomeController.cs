@@ -1,7 +1,8 @@
-﻿using FinancialAppAPI.Models;
-using Microsoft.AspNetCore.Mvc;
-using FinancialAppAPI.Data;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
+using FinancialAppAPI.Data.Dtos.Income;
+using FluentResults;
+using FinancialAppAPI.Interfaces.Services;
 
 namespace FinancialAppAPI.Controllers
 {
@@ -9,93 +10,89 @@ namespace FinancialAppAPI.Controllers
     [Route("[controller]")]
     public class IncomeController : ControllerBase
     {
-        private FinancialContext _context;
+        private readonly IIncomeService _incomeService;
 
-        public IncomeController(FinancialContext context)
+        public IncomeController(IIncomeService incomeService)
         {
-            _context = context;
+            _incomeService = incomeService;
         }
 
         [HttpPost]
-        public IActionResult AddIncome([FromBody] Income income)
+        public IActionResult AddIncome([FromBody] CreateIncomeDto incomeDto)
         {
-            IQueryable<Income> searchSameName = SameName(income);
+            ReadIncomeDto readDto = _incomeService.AddIncome(incomeDto);
 
-            //If there isn't an income with same in the same month, it'll be allowed to be add
-            if (searchSameName.Count() == 0)
-            {
-                _context.Incomes.Add(income);
-                _context.SaveChanges();
-                return CreatedAtAction(nameof(ListIncomeById), new { Id = income.incomeId }, income);
-            }
+            //If there's already an income with same description in the same month, it'll return null from AddIncome method
+            if (readDto != null)
+                return CreatedAtAction(nameof(ListIncomeById), new { Id = readDto.IncomeId }, readDto);
 
-            return BadRequest($"Income with same name already exists in {CultureInfo.GetCultureInfo("en-Us").DateTimeFormat.GetMonthName(income.incomeDate.Month)}");
-
+            return BadRequest($"Income with same name already exists in {CultureInfo.GetCultureInfo("en-Us").DateTimeFormat.GetMonthName(incomeDto.IncomeDate.Month)}");
         }
 
+
         [HttpGet]
-        public IEnumerable<Income> ListIncomes()
+        public IActionResult ListIncomes()
         {
-            return _context.Incomes;
+            List<ReadIncomeDto> readDto = _incomeService.ListIncomes();
+            if (readDto != null)
+                return Ok(readDto);
+
+            return NotFound();
         }
 
         [HttpGet("{id}")]
         public IActionResult ListIncomeById(int id)
         {
-            Income income = _context.Incomes.FirstOrDefault(income => income.incomeId == id);
-            if (income != null)
-            {
-                return Ok(income);
-            }
+            ReadIncomeDto readDto = _incomeService.ListIncomeById(id);
+            if (readDto != null)
+                return Ok(readDto);
+
+            return NotFound();
+        }
+
+        [HttpGet("Search/{description}")]
+        public IActionResult ListIncomeByDescription(string description)
+        {
+            List<ReadIncomeDto> readListDto = _incomeService.ListIncomeByDescription(description);
+            if (readListDto != null)
+                return Ok(readListDto);
+
+            return NotFound();
+        }
+
+        [HttpGet("Search/{year}/{month}")]
+        public IActionResult ListIncomeByMonthOfYear(int year, int month)
+        {
+            List<ReadIncomeDto> readListDto = _incomeService.ListIncomeByMonthOfYear(year, month);
+            if (readListDto != null)
+                return Ok(readListDto);
+
             return NotFound();
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateIncome(int id, [FromBody] Income updatedIncome)
+        public IActionResult UpdateIncome(int id, [FromBody] UpdateIncomeDto updatedIncomeDto)
         {
-            Income income = _context.Incomes.FirstOrDefault(income => income.incomeId == id);
+            Result result = _incomeService.UpdateIncome(id, updatedIncomeDto);
+            if (result.IsFailed)
+                return BadRequest(result);
 
-            IQueryable<Income> searchSameName = SameName(updatedIncome);
+            return NoContent();
 
-            if (income != null)
-            {
-                //If there isn't other income with same name except for the one being changed, it'll be allowed to be updated
-                if (searchSameName.Count() == 0 || searchSameName.Select(inc => inc.incomeName).Contains(income.incomeName))
-                {
-                    income.incomeName = updatedIncome.incomeName;
-                    income.incomeAmount = updatedIncome.incomeAmount;
-                    income.incomeDate = updatedIncome.incomeDate;
-                    _context.SaveChanges();
-                    return NoContent();
-                }
-                else
-                {
-                    return BadRequest($"Income with same name already exists in {CultureInfo.GetCultureInfo("en-Us").DateTimeFormat.GetMonthName(updatedIncome.incomeDate.Month)}");
-                }
-            }
-            return NotFound();
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteIncome(int id)
         {
-            Income income = _context.Incomes.FirstOrDefault(income => income.incomeId == id);
-            if (income != null)
-            {
-                _context.Remove(income);
-                _context.SaveChanges();
-                return NoContent();
-            }
-            return NotFound();
+            Result result = _incomeService.DeleteIncome(id);
+            if (result.IsFailed)
+                return NotFound();
+
+            return NoContent();
         }
 
-        //Verifies if an income with same name exists in the same month 
-        private IQueryable<Income> SameName(Income income)
-        {
-            return from inc in _context.Incomes
-                   where inc.incomeName == income.incomeName && inc.incomeDate.Month == income.incomeDate.Month
-                   select inc;
-        }
+
+
 
 
     }

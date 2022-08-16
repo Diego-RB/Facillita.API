@@ -2,6 +2,11 @@
 using FinancialAppAPI.Data;
 using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
+using AutoMapper;
+using FinancialAppAPI.Data.Dtos.Expense;
+using FinancialAppAPI.Services;
+using FluentResults;
+using FinancialAppAPI.Interfaces.Services;
 
 namespace FinancialAppAPI.Controllers
 {
@@ -9,96 +14,85 @@ namespace FinancialAppAPI.Controllers
     [Route("[controller]")]
     public class ExpenseController : ControllerBase
     {
-        private FinancialContext _context;
+        private IExpenseService _expenseService;
 
-        public ExpenseController(FinancialContext context)
+        public ExpenseController(IExpenseService expenseService)
         {
-            _context = context;
+            _expenseService = expenseService;
         }
 
         [HttpPost]
-        public IActionResult AddExpense([FromBody] Expense expense)
+        public IActionResult AddExpense([FromBody] CreateExpenseDto expenseDto)
         {
-            IQueryable<Expense> searchSameName = SameName(expense);
+            ReadExpenseDto readDto = _expenseService.AddExpense(expenseDto);
 
-            //If there isn't an expense with same in the same month, it'll be allowed to be add
-            if (searchSameName.Count() == 0)
-            {
-                _context.Expenses.Add(expense);
-                _context.SaveChanges();
-                return CreatedAtAction(nameof(ListExpensesById), new { Id = expense.expenseId }, expense);
-            }
+            //If there's already an expense with same description in the same month, it'll return null from AddExpense method
+            if (readDto != null)
+                return CreatedAtAction(nameof(ListExpenseById), new { Id = readDto.ExpenseId }, readDto);
 
-            return BadRequest($"Expense with same name already exists in {CultureInfo.GetCultureInfo("en-Us").DateTimeFormat.GetMonthName(expense.expenseDate.Month)}");
-
+            return BadRequest($"Expense with same name already exists in {CultureInfo.GetCultureInfo("en-Us").DateTimeFormat.GetMonthName(expenseDto.ExpenseDate.Month)}");
         }
-
 
 
         [HttpGet]
-        public IEnumerable<Expense> ListExpenses()
+        public IActionResult ListExpenses()
         {
-            return _context.Expenses;
+            List<ReadExpenseDto> readDto = _expenseService.ListExpenses();
+            if (readDto != null)
+                return Ok(readDto);
+
+            return NotFound();
         }
 
         [HttpGet("{id}")]
-        public IActionResult ListExpensesById(int id)
+        public IActionResult ListExpenseById(int id)
         {
-            Expense expense = _context.Expenses.FirstOrDefault(expense => expense.expenseId == id);
-            if (expense != null)
-            {
-                return Ok(expense);
-            }
+            ReadExpenseDto readDto = _expenseService.ListExpenseById(id);
+            if (readDto != null)
+                return Ok(readDto);
+
+            return NotFound();
+        }
+
+        [HttpGet("Search/{description}")]
+        public IActionResult ListExpenseByDescription(string description)
+        {
+            List<ReadExpenseDto> readListDto = _expenseService.ListExpenseByDescription(description);
+            if (readListDto != null)
+                return Ok(readListDto);
+
+            return NotFound();
+        }
+
+        [HttpGet("Search/{year}/{month}")]
+        public IActionResult ListExpenseByMonthOfYear(int year, int month)
+        {
+            List<ReadExpenseDto> readListDto = _expenseService.ListExpenseByMonthOfYear(year, month);
+            if (readListDto != null)
+                return Ok(readListDto);
+
             return NotFound();
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateExpense(int id, [FromBody] Expense updatedExpense)
+        public IActionResult UpdateExpense(int id, [FromBody] UpdateExpenseDto updatedExpenseDto)
         {
-            Expense expense = _context.Expenses.FirstOrDefault(expense => expense.expenseId == id);
+            Result result = _expenseService.UpdateExpense(id, updatedExpenseDto);
+            if (result.IsFailed)
+                return BadRequest(result);
 
-            IQueryable<Expense> searchSameName = SameName(updatedExpense);
+            return NoContent();
 
-            if (expense != null)
-            {
-                //If there isn't other expense with same name except for the one being changed, it'll be allowed to be updated
-                if (searchSameName.Count() == 0 || searchSameName.Select(exp => exp.expenseName).Contains(expense.expenseName))
-                {
-                    expense.expenseName = updatedExpense.expenseName;
-                    expense.expenseAmount = updatedExpense.expenseAmount;
-                    expense.expenseDate = updatedExpense.expenseDate;
-                    _context.SaveChanges();
-                    return NoContent();
-                }
-                else
-                {
-                    return BadRequest($"Expense with same name already exists in {CultureInfo.GetCultureInfo("en-Us").DateTimeFormat.GetMonthName(updatedExpense.expenseDate.Month)}");
-                }
-
-            }
-            return NotFound();
         }
-
 
         [HttpDelete("{id}")]
         public IActionResult DeleteExpense(int id)
         {
-            Expense expense = _context.Expenses.FirstOrDefault(expense => expense.expenseId == id);
-            if (expense != null)
-            {
-                _context.Remove(expense);
-                _context.SaveChanges();
-                return NoContent();
-            }
-            return NotFound();
-        }
+            Result result = _expenseService.DeleteExpense(id);
+            if (result.IsFailed)
+                return NotFound();
 
-        //Verifies if an expense with same name exists in the same month 
-        private IQueryable<Expense> SameName(Expense expense)
-        {
-            return from exp in _context.Expenses
-                   where exp.expenseName == expense.expenseName && exp.expenseDate.Month == expense.expenseDate.Month
-                   select exp;
+            return NoContent();
         }
 
     }

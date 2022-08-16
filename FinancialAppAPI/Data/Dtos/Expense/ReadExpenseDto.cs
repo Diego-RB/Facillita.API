@@ -1,9 +1,9 @@
 ﻿using FinancialAppAPI.Models.Enum;
 using System.ComponentModel.DataAnnotations;
 
-namespace FinancialAppAPI.Models
+namespace FinancialAppAPI.Data.Dtos.Expense
 {
-    public class Expense
+    public class ReadExpenseDto
     {
         [Key]
         [Required]

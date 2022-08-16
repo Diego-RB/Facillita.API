@@ -1,12 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FinancialAppAPI.Models
+namespace FinancialAppAPI.Data.Dtos.Income
 {
-    public class Income
+    public class UpdateIncomeDto
     {
-        [Key]
-        [Required]
-        public int IncomeId { get; set; }
         [Required(ErrorMessage = "Income must have a description")]
         [StringLength(30, ErrorMessage = "Income's description has more than 30 characters")]
         public string IncomeName { get; set; }
@@ -15,6 +12,5 @@ namespace FinancialAppAPI.Models
         public double IncomeAmount { get; set; }
         [Required(ErrorMessage = "Income must have a date")]
         public DateTime IncomeDate { get; set; }
-
     }
 }

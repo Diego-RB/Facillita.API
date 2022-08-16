@@ -1,13 +1,10 @@
 ﻿using FinancialAppAPI.Models.Enum;
 using System.ComponentModel.DataAnnotations;
 
-namespace FinancialAppAPI.Models
+namespace FinancialAppAPI.Data.Dtos.Expense
 {
-    public class Expense
+    public class UpdateExpenseDto
     {
-        [Key]
-        [Required]
-        public int ExpenseId { get; set; }
         [Required(ErrorMessage = "Expense must have a description")]
         [StringLength(30, ErrorMessage = "Expense's description has more than 30 characters")]
         public string ExpenseName { get; set; }

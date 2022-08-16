@@ -13,30 +13,30 @@ namespace FinancialAppAPI.Migrations
                 name: "Expenses",
                 columns: table => new
                 {
-                    expenseId = table.Column<int>(type: "int", nullable: false)
+                    ExpenseId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    expenseName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    expenseAmount = table.Column<double>(type: "float", nullable: false),
-                    expenseDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    ExpenseName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    ExpenseAmount = table.Column<double>(type: "float", nullable: false),
+                    ExpenseDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Expenses", x => x.expenseId);
+                    table.PrimaryKey("PK_Expenses", x => x.ExpenseId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Incomes",
                 columns: table => new
                 {
-                    incomeId = table.Column<int>(type: "int", nullable: false)
+                    IncomeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    incomeName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    incomeAmount = table.Column<double>(type: "float", nullable: false),
-                    incomeDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    IncomeName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    IncomeAmount = table.Column<double>(type: "float", nullable: false),
+                    IncomeDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Incomes", x => x.incomeId);
+                    table.PrimaryKey("PK_Incomes", x => x.IncomeId);
                 });
         }
 
