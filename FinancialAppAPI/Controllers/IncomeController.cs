@@ -3,11 +3,14 @@ using System.Globalization;
 using FinancialAppAPI.Data.Dtos.Income;
 using FluentResults;
 using FinancialAppAPI.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FinancialAppAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize(Roles = "regular,admin")]
+
     public class IncomeController : ControllerBase
     {
         private readonly IIncomeService _incomeService;

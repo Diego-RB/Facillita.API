@@ -7,11 +7,13 @@ using FinancialAppAPI.Data.Dtos.Expense;
 using FinancialAppAPI.Services;
 using FluentResults;
 using FinancialAppAPI.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FinancialAppAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize(Roles = "regular,admin")]
     public class ExpenseController : ControllerBase
     {
         private IExpenseService _expenseService;

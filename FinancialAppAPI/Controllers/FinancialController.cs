@@ -4,11 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using FinancialAppAPI.Services;
 using FinancialAppAPI.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FinancialAppAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize(Roles = "regular,admin")]
     public class FinancialController : ControllerBase
     {
         private IFinancialService _financialService;

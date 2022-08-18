@@ -10,6 +10,7 @@ using FinancialAppAPI.Services;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace FinancialApp.Tests.Services
 {
     public class ExpenseServicesTests
