@@ -78,7 +78,7 @@ Tasks performed:
   
   <h2>Functionalities</h2>
   <br>
-  <b><i>The income methods also applies for expenses.</b></i>
+  <b><i>The logic for income's methods also applies for expenses.</b></i>
   
   <h3>Income Requests</h3>
   <details>
