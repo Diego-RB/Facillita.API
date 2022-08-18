@@ -1,7 +1,7 @@
 <h1 align="center"> Financial App API </h1>
 <p align="center">
 <img src="https://img.shields.io/badge/STATUS-IN%20DEVELOPMENT-yellow"/>
-<img src="https://img.shields.io/badge/WEEK-2%20OF%204-9cf"/>
+<img src="https://img.shields.io/badge/WEEK-3%20OF%204-9cf"/>
 </p>
 
 <h2>Project Description</h2>
@@ -47,6 +47,14 @@ Tasks performed:
   - Interfaces for services and repositories created;
   - Code refactored;
   - Unit tests implemented for Controllers and Services.
+
+ <h3><b>For Week 3 - TO BE COMPLETED</b></h3>
+
+Tasks performed:
+
+  - Created roles for regular users and an admin;
+  - Created an authentication system to identify each user;
+  - Implemented authorization system for each role.
   
   <h2>Validations</h2>
   
@@ -78,7 +86,7 @@ Tasks performed:
   
   <h2>Functionalities</h2>
   <br>
-  <b><i>The same income methods also applies for expenses.</b></i>
+  <b><i>The logic for income's methods also applies for expenses.</b></i>
   
   <h3>Income Requests</h3>
   <details>
