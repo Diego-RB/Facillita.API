@@ -110,14 +110,47 @@ Tasks performed:
         Unforeseen = 7  
   </pre>
    </details>
+   
+  <h2>Authentication System Functionalities</h2>
+  <br>
+  <div>The authentication system has two defined roles: admin and regular users. Upon login, it creates a specific token for each user. The financial app can only
+  be used after the authentication and the provided token.</div>
+  <br>
   
-  <h2>Functionalities</h2>
+  <details>
+  <summary><i>Register [POST]</i></summary>
+  <div>Only the admin is allowed to register a new user, it requires the following parameters:<div>
+  <pre>    
+     {
+      "username": "string",
+      "email": "string",
+      "password": "string",
+      "rePassword": "string"
+    }
+  </pre>   
+  <div>Repassword serves a double check</div>
+  <br>
+  </details>
+  <details>
+  <summary><i>Login [POST]</i></summary>
+  <div>With a successfully registered user, a token is received after entering the username and password.<div>  
+  <br>
+  </details>
+  <details>
+  <summary><i>Logout [POST]</i></summary>
+  <div>A simple logout feature allowing the user exit the system.<div>
+  <br>
+  </details>
+  
+  
+  <h2>Fincial App Functionalities</h2>
   <br>
   <b><i>The logic for income's methods also applies for expenses.</b></i>
   
   <h3>Income Requests</h3>
+  <br>
   <details>
-  <summary>Create New Income [POST]</summary>
+  <summary><i>Create New Income [POST]</i></summary>
   <br>
   <div>An example of inputs for income.</div>
   <pre>
@@ -159,7 +192,7 @@ Tasks performed:
   </pre>
   </details>
   <details>
-  <summary>List Incomes [GET]</summary>
+  <summary><i>List Incomes [GET]</i></summary>
   <br>
   <div>It'll simple return all the incomes avalaible. For example:</div>
   <pre> 
@@ -179,7 +212,7 @@ Tasks performed:
   </pre>   
   </details>
   <details>
-  <summary>List Income By Id [GET]</summary>
+  <summary><i>List Income By Id [GET]</i></summary>
   <br>
   <div>Returns a income by its Id. If it exists in the databse, it'll return successfully as "Ok", otherwise it'll show a NotFound result: </div>
   <pre> 
@@ -189,7 +222,7 @@ Tasks performed:
   </pre>   
   </details>
    <details>
-  <summary>List Income By Description [GET]</summary>
+  <summary><i>List Income By Description [GET]</i></summary>
   <br>
   <div>Checks if a given string is contained in the income's description. If there're incomes meeting the requiriment the database, it'll return successfully as     "Ok" with a list of incomes: </div>
   <pre> 
@@ -223,7 +256,7 @@ Tasks performed:
   </pre>
   </details>
    <details>
-  <summary>List Income By Month Of A Year [GET]</summary>
+  <summary><i>List Income By Month Of A Year [GET]</i></summary>
   <br>
   <div>Returns incomes of a given month of a year. If there're incomes meeting the requiriment the database, it'll return successfully as "Ok": </div>  
   <pre> 
@@ -258,7 +291,7 @@ Tasks performed:
   </pre>
   </details>
   <details>
-  <summary>Update Income [PUT]</summary>
+  <summary><i>Update Income [PUT]</i></summary>
   <br>
   <div>First it will check if the target income exists. Then it'll check if the updated name respects the same rule as when you add the 
   income. If all criteria are met, targeted income will be updated with a NoContent response:</div>
@@ -287,12 +320,15 @@ Tasks performed:
    </pre> 
   </details>
    <details>
-  <summary>Delete Income [DELETE]</summary>
+  <summary><i>Delete Income [DELETE]</i></summary>
   <br>
   <div>First it will check if the target income exists (returns NotFound if not). If so, it'll delete target income with a NoContent response. </div> 
+  <br>
   </details>
-   <details>
-  <summary>Month Summary [GET]</summary>
+   <h3>Summary</h3>
+   <br>
+  <details>
+  <summary><i>Month Summary [GET]</i></summary>
   <br>
   <div>It'll return the financial summary of a given month of a given year. For example:</div>
   <pre> 
@@ -318,4 +354,4 @@ Tasks performed:
   </pre>   
   <div>Notice a category will only be listed if it contains an expense.</div>
   </details>
-  <details>
+
