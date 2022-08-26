@@ -338,7 +338,7 @@ Tasks performed:
   <div>First it will check if the target income exists (returns NotFound if not). If so, it'll delete target income with a NoContent response. </div> 
   <br>
   </details>
-   <h3>Summary</h3>
+   <h3>Financial Request</h3>
    <br>
   <details>
   <summary><i>Month Summary [GET]</i></summary>
