@@ -5,7 +5,7 @@
 </p>
 
 <h2>Project Description</h2>
-<div>API for personal finance management. It'll be developed as part of a Back-End learning activity from <a href="https://www.alura.com.br/challengesr" target="_blank">Alura Challenges</a>
+<div>API for personal finance management. It'll be developed as part of a Back-End learning activity from <a href="https://www.alura.com.br/challengesr" target="_blank" rel="noopener noreferrer">Alura Challenges</a>
 to be fulling completed in the course of a month. Additional functionalities will be implemented for each week of the project as follows:</div>
 <p>
 <ul>
