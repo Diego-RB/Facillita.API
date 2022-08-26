@@ -5,7 +5,7 @@
 </p>
 
 <h2>Project Description</h2>
-<div>API for personal finance management. It'll be developed as part of a Back-End learning activity from <a href="https://www.alura.com.br/challengesr">Alura Challenges</a>
+<div>API for personal finance management. It'll be developed as part of a Back-End learning activity from <a href="https://www.alura.com.br/challengesr" target="_blank">Alura Challenges</a>
 to be fulling completed in the course of a month. Additional functionalities will be implemented for each week of the project as follows:</div>
 <p>
 <ul>
@@ -71,7 +71,7 @@ Tasks performed:
   <h2>How To Start</h2>
   
   <ul>
-  <li>Access <a href="https://financialappusers.azurewebsites.net/index.html">user's authentication</a>;</li>
+  <li>Access <a href="https://financialappusers.azurewebsites.net/index.html" target="_blank">user's authentication</a>;</li>
   <li>Login with the following parameters:</li>
   <br>
   <ul>
@@ -84,7 +84,7 @@ Tasks performed:
   
   ![Token](https://user-images.githubusercontent.com/105619459/186917418-27a51363-72d1-46bb-91b8-09d03987b2d3.jpg)
   
-  <li>Acess the <a href="https://financialappapi.azurewebsites.net/index.html">financial app</a>;</li>
+  <li>Acess the <a href="https://financialappapi.azurewebsites.net/index.html" target="_blank">financial app</a>;</li>
   <li>On the UI, click in "Authorize" and paste the token in "Value":</li>
   <br>
   
