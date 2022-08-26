@@ -1,7 +1,7 @@
 <h1 align="center"> Financial App API </h1>
 <p align="center">
-<img src="https://img.shields.io/badge/STATUS-IN%20DEVELOPMENT-yellow"/>
-<img src="https://img.shields.io/badge/WEEK-3%20OF%204-9cf"/>
+<img src="https://img.shields.io/badge/STATUS-COMPLETED-green"/>
+<img src="https://img.shields.io/badge/WEEK-4%20OF%204-9cf"/>
 </p>
 
 <h2>Project Description</h2>
@@ -14,7 +14,7 @@ to be fulling completed in the course of a month. Additional functionalities wil
   <li><b>Week 3 and 4</b>: Implement an authorization system and deploy it into a cloud service provider.</li>
 </ul>
 </p>
-The programming language chose for this challenge was <b>C#</b> in <b>.NET 6 Framework</b> and <b>SQL Server</b> as the database management system.
+The programming language chose for this challenge was <b>C#</b> in <b>.NET 6 Framework</b>, <b>SQL Server</b> as the local database and deployed on <b>Azure</b>.
 
 <h2>Status</h2>
 
@@ -48,13 +48,40 @@ Tasks performed:
   - Code refactored;
   - Unit tests implemented for Controllers and Services.
 
- <h3><b>For Week 3 - TO BE COMPLETED</b></h3>
+ <h3><b>For Week 3 and 4 - TO BE COMPLETED</b></h3>
 
 Tasks performed:
 
   - Created roles for regular users and an admin;
   - Created an authentication system to identify each user;
-  - Implemented authorization system for each role.
+  - Implemented authorization system for each role;
+  - Swagger UI adjusted for authorization token;
+  - App deployed on Azure with an UI for user's authentication and the financial app itself.
+  
+  <h2>How To Start</h2>
+  
+  <ul>
+  <li>Access <a href="https://financialappusers.azurewebsites.net/index.html">user's authentication</a>;</li>
+  <li>Login with the following parameters:</li>
+  <br>
+  <ul>
+  <li>Name: "TestUser";</li>
+  <li>Password: "Pass123@";</li>
+  </ul>
+  <br>
+  <li>Copy the token from the Response Body("message"):</li>
+  <br>
+  
+  ![Token](https://user-images.githubusercontent.com/105619459/186917418-27a51363-72d1-46bb-91b8-09d03987b2d3.jpg)
+  
+  <li>Acess the <a href="https://financialappapi.azurewebsites.net/index.html">financial app</a>;</li>
+  <li>On the UI, click in "Authorize" and paste the token in "Value":</li>
+  <br>
+  
+  ![Authorize](https://user-images.githubusercontent.com/105619459/186918762-a93b0908-1eed-4c1d-8d6f-4ee951ba74b0.jpg)
+  
+  <li>Now the user is authorized to operate the app.</li>
+  </ul>  
   
   <h2>Validations</h2>
   
