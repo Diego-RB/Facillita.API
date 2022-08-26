@@ -93,7 +93,7 @@ Tasks performed:
   <li>Now the user is authorized to operate the app.</li>
   </ul>  
   
-  <h2>Validations</h2>
+  <h2>Financial APP Validations</h2>
   
   <div> All fields are required for both requests (incomes and expenses) with the following rules:<div>
   <p>
