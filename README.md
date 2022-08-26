@@ -64,7 +64,7 @@ Tasks performed:
   - Swagger UI adjusted for authorization token;
   - App deployed on Azure with an UI for user's authentication and the financial app itself. 
   
-  <h3><b>FOLLOW UP IMPROVEMENTS TO BE DONE</b></h3>
+  <h3><b>Follow Up Improvements To Be Done</b></h3>
   
   - Improve refactoring and design.
   
