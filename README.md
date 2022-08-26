@@ -129,6 +129,7 @@ Tasks performed:
   
   <details>
   <summary><i>Register [POST]</i></summary>
+  <br>
   <div>Only the admin is allowed to register a new user, it requires the following parameters:<div>
   <pre>    
      {
