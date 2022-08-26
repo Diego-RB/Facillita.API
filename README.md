@@ -16,6 +16,9 @@ to be fulling completed in the course of a month. Additional functionalities wil
 </p>
 <div>The programming language chose for this challenge was <b>C#</b> in <b>.NET 6 Framework</b>, <b>SQL Server</b> as the local database and deployed on <b>Azure</b>.</div>
 <p>
+<div>The project's results can be accessed in the links bellow. Follow the steps in <b>"How To Start"</b> to use them.</div>
+</p>
+<p>
 <div><i>Authentication System UI</i>: &nbsp https://financialappusers.azurewebsites.net/index.html</div
 <div><i>Financial App UI</i>: &nbsp https://financialappapi.azurewebsites.net/index.html</div>
 </p>
