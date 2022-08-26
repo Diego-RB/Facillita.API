@@ -143,11 +143,13 @@ Tasks performed:
   </details>
   <details>
   <summary><i>Login [POST]</i></summary>
+  <br>
   <div>With a successfully registered user, a token is received after entering the username and password.<div>  
   <br>
   </details>
   <details>
   <summary><i>Logout [POST]</i></summary>
+  <br>
   <div>A simple logout feature allowing the user exit the system.<div>
   <br>
   </details>
