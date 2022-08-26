@@ -54,15 +54,19 @@ Tasks performed:
   - Code refactored;
   - Unit tests implemented for Controllers and Services.
 
- <h3><b>For Week 3 and 4 - TO BE COMPLETED</b></h3>
+ <h3><b>For Week 3 and 4 - COMPLETED</b></h3>
 
-Tasks performed:
+ Tasks performed:
 
   - Created roles for regular users and an admin;
   - Created an authentication system to identify each user;
   - Implemented authorization system for each role;
   - Swagger UI adjusted for authorization token;
-  - App deployed on Azure with an UI for user's authentication and the financial app itself.
+  - App deployed on Azure with an UI for user's authentication and the financial app itself. 
+  
+  <h3><b>FOLLOW UP IMPROVEMENTS TO BE DONE</b></h3>
+  
+  - Improve refactoring and design.
   
   <h2>How To Start</h2>
   
