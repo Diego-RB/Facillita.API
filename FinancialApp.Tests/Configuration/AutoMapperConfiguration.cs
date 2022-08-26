@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using FinancialAppAPI.Data.Dtos.Expense;
-using FinancialAppAPI.Data.Dtos.Income;
-using FinancialAppAPI.Models;
+using FinancialApp.API.Data.Dtos.Expense;
+using FinancialApp.API.Data.Dtos.Income;
+using FinancialApp.API.Models;
 
 namespace FinancialApp.Tests.Configuration
 {

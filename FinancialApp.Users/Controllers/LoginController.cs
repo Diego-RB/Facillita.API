@@ -1,4 +1,6 @@
-﻿using FinancialApp.Users.Data.Requests;
+﻿using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+using FinancialApp.Users.Data.Requests;
 using FinancialApp.Users.Services;
 using FluentResults;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +15,7 @@ namespace FinancialApp.Users.Controllers
 
         public LoginController(LoginService loginService)
         {
-            _loginService = loginService;
+            _loginService = loginService;     
         }
 
         [HttpPost]

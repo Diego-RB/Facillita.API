@@ -1,8 +1,8 @@
-﻿using FinancialAppAPI.Data;
-using FinancialAppAPI.Interfaces.Repositories;
-using FinancialAppAPI.Models.FinancialSummary;
-using FinancialAppAPI.Repository;
-using FinancialAppAPI.Services;
+﻿using FinancialApp.API.Data;
+using FinancialApp.API.Interfaces.Repositories;
+using FinancialApp.API.Models.FinancialSummary;
+using FinancialApp.API.Repository;
+using FinancialApp.API.Services;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 

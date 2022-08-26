@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using FinancialApp.Tests.Configuration;
-using FinancialAppAPI.Data;
-using FinancialAppAPI.Data.Dtos.Expense;
-using FinancialAppAPI.Interfaces.Repositories;
-using FinancialAppAPI.Models;
-using FinancialAppAPI.Models.Enum;
-using FinancialAppAPI.Repository;
-using FinancialAppAPI.Services;
+using FinancialApp.API.Data;
+using FinancialApp.API.Data.Dtos.Expense;
+using FinancialApp.API.Interfaces.Repositories;
+using FinancialApp.API.Models;
+using FinancialApp.API.Models.Enum;
+using FinancialApp.API.Repository;
+using FinancialApp.API.Services;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 

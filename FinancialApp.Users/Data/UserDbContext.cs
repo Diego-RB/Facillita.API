@@ -29,6 +29,7 @@ namespace FinancialApp.Users.Data
 
             PasswordHasher<IdentityUser<int>> hasher = new PasswordHasher<IdentityUser<int>>();
 
+            //Secrets.json used for "adminpassword"
             admin.PasswordHash = hasher.HashPassword(admin, _configuration.GetValue<string>("adminpassword")); 
 
             builder.Entity<IdentityUser<int>>().HasData(admin);

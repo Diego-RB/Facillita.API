@@ -1,7 +1,7 @@
 ﻿using FakeItEasy;
-using FinancialAppAPI.Controllers;
-using FinancialAppAPI.Data.Dtos.Expense;
-using FinancialAppAPI.Interfaces.Services;
+using FinancialApp.API.Controllers;
+using FinancialApp.API.Data.Dtos.Expense;
+using FinancialApp.API.Interfaces.Services;
 using FluentAssertions;
 using FluentResults;
 using Microsoft.AspNetCore.Mvc;
