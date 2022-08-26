@@ -173,7 +173,7 @@ Tasks performed:
     "incomeDate": "2022-07-23"  
   }
   </pre>    
-  <div>If it's sucedded, it'll return Code 201 with the id for the data. For expense a category is specified:</div>
+  <div>If it's sucedded, it'll return Code 201 with the id for the data. For an expense a category can be specified:</div>
   <br>
   <pre>
   {
