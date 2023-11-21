@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'Facillita'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E486B77666D443E79C0002D77EC80B47 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7CAA4E33A4D042DAA9AC947750BFDC23 }}
           package: .
