@@ -1,11 +1,10 @@
-﻿using Facillita.API.Interfaces.Services;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Facillita.API.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Facillita.API.Controllers
 {
-    [AllowAnonymous]
     [ApiController]
     [Route("[controller]")]
     [Authorize(Roles = "regular,admin")]
@@ -24,7 +23,7 @@ namespace Facillita.API.Controllers
             var summary = _financialService.MonthSummary(year, month);
             string json = JsonConvert.SerializeObject(summary, Formatting.Indented);
             return Ok(json);
-        }
+        }      
 
     }
 }
