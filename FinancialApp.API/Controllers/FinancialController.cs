@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace Facillita.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("financial")]
     public class FinancialController : ControllerBase
     {
         private IFinancialService _financialService;

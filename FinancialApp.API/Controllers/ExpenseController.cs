@@ -7,7 +7,7 @@ using System.Globalization;
 namespace Facillita.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("expense")]
     public class ExpenseController : ControllerBase
     {
         private IExpenseService _expenseService;

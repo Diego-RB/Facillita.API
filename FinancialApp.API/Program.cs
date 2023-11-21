@@ -19,29 +19,29 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(option =>
 {
     option.SwaggerDoc("v1", new OpenApiInfo { Title = "Facillita.API", Version = "v1" });
-    option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-    {
-        In = ParameterLocation.Header,
-        Description = "Please enter a valid token",
-        Name = "Authorization",
-        Type = SecuritySchemeType.Http,
-        BearerFormat = "JWT",
-        Scheme = "Bearer"
-    });
-    option.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference
-                {
-                    Type=ReferenceType.SecurityScheme,
-                    Id="Bearer"
-                }
-            },
-            new string[]{}
-        }
-    });
+    //option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    //{
+    //    In = ParameterLocation.Header,
+    //    Description = "Please enter a valid token",
+    //    Name = "Authorization",
+    //    Type = SecuritySchemeType.Http,
+    //    BearerFormat = "JWT",
+    //    Scheme = "Bearer"
+    //});
+    //option.AddSecurityRequirement(new OpenApiSecurityRequirement
+    //{
+    //    {
+    //        new OpenApiSecurityScheme
+    //        {
+    //            Reference = new OpenApiReference
+    //            {
+    //                Type=ReferenceType.SecurityScheme,
+    //                Id="Bearer"
+    //            }
+    //        },
+    //        new string[]{}
+    //    }
+    //});
 });
 builder.Services.AddScoped<IIncomeService, IncomeService>();
 builder.Services.AddScoped<IExpenseService, ExpenseService>();
@@ -52,25 +52,25 @@ builder.Services.AddScoped<IFinancialRepository, FinancialRepository>();
 //Secret Manager tool was used to hide the connection string wich can be inserted in appsettings.json
 builder.Services.AddDbContext<FinancialContext>
     (opts => opts.UseSqlServer(builder.Configuration.GetConnectionString("Facillita")));
-builder.Services.AddAuthentication(auth =>
-{
-    auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-.AddJwtBearer(token =>
-{
-    token.RequireHttpsMetadata = false;
-    token.SaveToken = true;
-    token.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes("0asdasuiwhiqidbasibdia791y919asd0a8sud")),
-        ValidateIssuer = false,
-        ValidateAudience = false,
-        ClockSkew = TimeSpan.Zero
-    };
-});
+//builder.Services.AddAuthentication(auth =>
+//{
+//    auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+//    auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+//})
+//.AddJwtBearer(token =>
+//{
+//    token.RequireHttpsMetadata = false;
+//    token.SaveToken = true;
+//    token.TokenValidationParameters = new TokenValidationParameters
+//    {
+//        ValidateIssuerSigningKey = true,
+//        IssuerSigningKey = new SymmetricSecurityKey(
+//                Encoding.UTF8.GetBytes("0asdasuiwhiqidbasibdia791y919asd0a8sud")),
+//        ValidateIssuer = false,
+//        ValidateAudience = false,
+//        ClockSkew = TimeSpan.Zero
+//    };
+//});
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();

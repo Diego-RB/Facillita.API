@@ -12,5 +12,6 @@ namespace Facillita.API.Data.Dtos.Income
         public double IncomeAmount { get; set; }
         [Required(ErrorMessage = "Income must have a date")]
         public DateTime IncomeDate { get; set; }
+        public int UserId { get; set; }
     }
 }
