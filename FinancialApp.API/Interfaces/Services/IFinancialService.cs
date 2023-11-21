@@ -1,6 +1,6 @@
-﻿using FinancialApp.API.Models.FinancialSummary;
+﻿using Facillita.API.Models.FinancialSummary;
 
-namespace FinancialApp.API.Interfaces.Services
+namespace Facillita.API.Interfaces.Services
 {
     public interface IFinancialService
     {       

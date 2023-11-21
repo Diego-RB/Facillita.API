@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinancialApp.Tests", "FinancialApp.Tests\FinancialApp.Tests.csproj", "{337FF4B5-41BB-426A-9936-E3279397221C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Facillita.Users", "FinancialApp.Users\Facillita.Users.csproj", "{087AF1BF-8B10-476B-B733-0ED3060626CC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinancialApp.Users", "FinancialApp.Users\FinancialApp.Users.csproj", "{087AF1BF-8B10-476B-B733-0ED3060626CC}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinancialApp.API", "FinancialApp.API\FinancialApp.API.csproj", "{B3B9C1A2-CDD4-4AA2-BA3D-D0D0D5385843}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Facillita.API", "FinancialApp.API\Facillita.API.csproj", "{B3B9C1A2-CDD4-4AA2-BA3D-D0D0D5385843}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{337FF4B5-41BB-426A-9936-E3279397221C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{337FF4B5-41BB-426A-9936-E3279397221C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{337FF4B5-41BB-426A-9936-E3279397221C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{337FF4B5-41BB-426A-9936-E3279397221C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{087AF1BF-8B10-476B-B733-0ED3060626CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{087AF1BF-8B10-476B-B733-0ED3060626CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{087AF1BF-8B10-476B-B733-0ED3060626CC}.Release|Any CPU.ActiveCfg = Release|Any CPU

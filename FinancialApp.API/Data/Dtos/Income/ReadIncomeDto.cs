@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FinancialApp.API.Data.Dtos.Income
+namespace Facillita.API.Data.Dtos.Income
 {
     public class ReadIncomeDto
     {

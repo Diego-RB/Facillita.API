@@ -1,7 +1,7 @@
 ﻿using FluentResults;
 using Microsoft.AspNetCore.Identity;
 
-namespace FinancialApp.Users.Services
+namespace Facillita.Users.Services
 {
     public class LogoutService
     {

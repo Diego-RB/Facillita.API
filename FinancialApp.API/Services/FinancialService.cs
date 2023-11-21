@@ -1,11 +1,11 @@
-﻿using FinancialApp.API.Data;
-using FinancialApp.API.Interfaces.Repositories;
-using FinancialApp.API.Interfaces.Services;
-using FinancialApp.API.Models.FinancialSummary;
-using FinancialApp.API.Repository;
+﻿using Facillita.API.Data;
+using Facillita.API.Interfaces.Repositories;
+using Facillita.API.Interfaces.Services;
+using Facillita.API.Models.FinancialSummary;
+using Facillita.API.Repository;
 using Newtonsoft.Json;
 
-namespace FinancialApp.API.Services
+namespace Facillita.API.Services
 {
     public class FinancialService : IFinancialService
     {

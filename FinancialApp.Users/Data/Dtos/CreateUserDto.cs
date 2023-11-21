@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FinancialApp.Users.Data.Dtos
+namespace Facillita.Users.Data.Dtos
 {
     public class CreateUserDto
     {

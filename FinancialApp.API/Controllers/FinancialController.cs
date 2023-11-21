@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using FinancialApp.API.Interfaces.Services;
+using Facillita.API.Interfaces.Services;
 using Microsoft.AspNetCore.Authorization;
 
-namespace FinancialApp.API.Controllers
+namespace Facillita.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]

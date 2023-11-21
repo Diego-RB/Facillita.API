@@ -1,7 +1,7 @@
-﻿using FinancialApp.API.Data.Dtos.Income;
+﻿using Facillita.API.Data.Dtos.Income;
 using FluentResults;
 
-namespace FinancialApp.API.Interfaces.Services
+namespace Facillita.API.Interfaces.Services
 {
     public interface IIncomeService
     {

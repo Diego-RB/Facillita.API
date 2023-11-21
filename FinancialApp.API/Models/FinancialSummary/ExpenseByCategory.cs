@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace FinancialApp.API.Models.FinancialSummary
+namespace Facillita.API.Models.FinancialSummary
 {
     public class ExpenseByCategory
     {

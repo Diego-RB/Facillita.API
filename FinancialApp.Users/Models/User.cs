@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FinancialApp.Users.Models
+namespace Facillita.Users.Models
 {
     public class User
     {

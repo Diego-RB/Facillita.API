@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace FinancialApp.API.Migrations
+namespace Facillita.API.Migrations
 {
     public partial class CreateUserTAble : Migration
     {

@@ -1,11 +1,11 @@
 ﻿using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
-using FinancialApp.Users.Data.Requests;
-using FinancialApp.Users.Services;
+using Facillita.Users.Data.Requests;
+using Facillita.Users.Services;
 using FluentResults;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FinancialApp.Users.Controllers
+namespace Facillita.Users.Controllers
 {
     [ApiController]
     [Route("[controller]")]

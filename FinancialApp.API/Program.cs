@@ -1,8 +1,8 @@
-using FinancialApp.API.Data;
-using FinancialApp.API.Interfaces.Repositories;
-using FinancialApp.API.Interfaces.Services;
-using FinancialApp.API.Repository;
-using FinancialApp.API.Services;
+using Facillita.API.Data;
+using Facillita.API.Interfaces.Repositories;
+using Facillita.API.Interfaces.Services;
+using Facillita.API.Repository;
+using Facillita.API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -18,7 +18,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(option =>
 {
-    option.SwaggerDoc("v1", new OpenApiInfo { Title = "FinancialApp.API", Version = "v1" });
+    option.SwaggerDoc("v1", new OpenApiInfo { Title = "Facillita.API", Version = "v1" });
     option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         In = ParameterLocation.Header,
@@ -81,7 +81,7 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "FinancialApp.API V1");
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Facillita.API V1");
     c.RoutePrefix = String.Empty;
 });
 //}

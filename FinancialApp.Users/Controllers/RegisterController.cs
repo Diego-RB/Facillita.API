@@ -1,10 +1,10 @@
-﻿using FinancialApp.Users.Data.Dtos;
-using FinancialApp.Users.Services;
+﻿using Facillita.Users.Data.Dtos;
+using Facillita.Users.Services;
 using FluentResults;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FinancialApp.Users.Controllers
+namespace Facillita.Users.Controllers
 {
     [ApiController]
     [Route("[controller]")]

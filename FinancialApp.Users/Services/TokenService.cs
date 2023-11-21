@@ -1,11 +1,11 @@
-﻿using FinancialApp.Users.Models;
+﻿using Facillita.Users.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace FinancialApp.Users.Services
+namespace Facillita.Users.Services
 {
     public class TokenService
     {

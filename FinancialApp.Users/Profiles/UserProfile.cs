@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using FinancialApp.Users.Data.Dtos;
-using FinancialApp.Users.Models;
+using Facillita.Users.Data.Dtos;
+using Facillita.Users.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace FinancialApp.Users.Profiles
+namespace Facillita.Users.Profiles
 {
     public class UserProfile : Profile
     {

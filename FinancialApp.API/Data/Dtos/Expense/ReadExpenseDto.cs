@@ -1,7 +1,7 @@
-﻿using FinancialApp.API.Models.Enum;
+﻿using Facillita.API.Models.Enum;
 using System.ComponentModel.DataAnnotations;
 
-namespace FinancialApp.API.Data.Dtos.Expense
+namespace Facillita.API.Data.Dtos.Expense
 {
     public class ReadExpenseDto
     {

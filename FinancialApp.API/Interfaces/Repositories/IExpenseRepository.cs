@@ -1,8 +1,8 @@
-﻿using FinancialApp.API.Data;
-using FinancialApp.API.Data.Dtos.Expense;
-using FinancialApp.API.Models;
+﻿using Facillita.API.Data;
+using Facillita.API.Data.Dtos.Expense;
+using Facillita.API.Models;
 
-namespace FinancialApp.API.Interfaces.Repositories
+namespace Facillita.API.Interfaces.Repositories
 {
     public interface IExpenseRepository
     {

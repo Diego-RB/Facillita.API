@@ -1,7 +1,7 @@
-﻿using FinancialApp.API.Data.Dtos.Expense;
+﻿using Facillita.API.Data.Dtos.Expense;
 using FluentResults;
 
-namespace FinancialApp.API.Interfaces.Services
+namespace Facillita.API.Interfaces.Services
 {
     public interface IExpenseService
     {

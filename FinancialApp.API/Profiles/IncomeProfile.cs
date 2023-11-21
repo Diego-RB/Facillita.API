@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using FinancialApp.API.Data.Dtos.Income;
-using FinancialApp.API.Models;
+using Facillita.API.Data.Dtos.Income;
+using Facillita.API.Models;
 
-namespace FinancialApp.API.Profiles
+namespace Facillita.API.Profiles
 {
     public class IncomeProfile : Profile
     {

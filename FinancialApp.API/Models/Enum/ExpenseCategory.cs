@@ -1,4 +1,4 @@
-﻿namespace FinancialApp.API.Models.Enum
+﻿namespace Facillita.API.Models.Enum
 {
     public enum ExpenseCategory : int
     {

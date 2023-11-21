@@ -1,4 +1,4 @@
-﻿namespace FinancialApp.Users.Models
+﻿namespace Facillita.Users.Models
 {
     public class Token
     {

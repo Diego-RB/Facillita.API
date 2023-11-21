@@ -1,9 +1,9 @@
-﻿using FinancialApp.Users.Data.Requests;
-using FinancialApp.Users.Models;
+﻿using Facillita.Users.Data.Requests;
+using Facillita.Users.Models;
 using FluentResults;
 using Microsoft.AspNetCore.Identity;
 
-namespace FinancialApp.Users.Services
+namespace Facillita.Users.Services
 {
     public class LoginService
     {

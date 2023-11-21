@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using FinancialApp.Users.Data.Dtos;
-using FinancialApp.Users.Models;
+using Facillita.Users.Data.Dtos;
+using Facillita.Users.Models;
 using FluentResults;
 using Microsoft.AspNetCore.Identity;
 
-namespace FinancialApp.Users.Services
+namespace Facillita.Users.Services
 {
     public class RegisterService
     {

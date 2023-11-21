@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FinancialApp.API.Models
+namespace Facillita.API.Models
 {
     public class Income
     {

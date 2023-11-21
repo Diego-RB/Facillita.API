@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
-using FinancialApp.API.Data;
-using FinancialApp.API.Data.Dtos.Expense;
-using FinancialApp.API.Interfaces.Repositories;
-using FinancialApp.API.Interfaces.Services;
-using FinancialApp.API.Models;
+using Facillita.API.Data;
+using Facillita.API.Data.Dtos.Expense;
+using Facillita.API.Interfaces.Repositories;
+using Facillita.API.Interfaces.Services;
+using Facillita.API.Models;
 using FluentResults;
 using System.Globalization;
 
-namespace FinancialApp.API.Services
+namespace Facillita.API.Services
 {
     public class ExpenseService : IExpenseService
     {

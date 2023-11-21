@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using FinancialApp.API.Data.Dtos.Expense;
-using FinancialApp.API.Models;
+using Facillita.API.Data.Dtos.Expense;
+using Facillita.API.Models;
 
-namespace FinancialApp.API.Profiles
+namespace Facillita.API.Profiles
 {
     public class ExpenseProfile : Profile
     {

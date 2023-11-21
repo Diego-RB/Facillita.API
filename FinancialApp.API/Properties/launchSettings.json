@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "FinancialApp.API": {
+    "Facillita.API": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

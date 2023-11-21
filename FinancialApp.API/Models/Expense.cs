@@ -1,7 +1,7 @@
-﻿using FinancialApp.API.Models.Enum;
+﻿using Facillita.API.Models.Enum;
 using System.ComponentModel.DataAnnotations;
 
-namespace FinancialApp.API.Models
+namespace Facillita.API.Models
 {
     public class Expense
     {

@@ -1,8 +1,8 @@
-﻿using FinancialApp.API.Data;
-using FinancialApp.API.Interfaces.Repositories;
-using FinancialApp.API.Models.FinancialSummary;
+﻿using Facillita.API.Data;
+using Facillita.API.Interfaces.Repositories;
+using Facillita.API.Models.FinancialSummary;
 
-namespace FinancialApp.API.Repository
+namespace Facillita.API.Repository
 {
     public class FinancialRepository : IFinancialRepository
     {

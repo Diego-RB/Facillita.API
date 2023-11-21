@@ -1,7 +1,7 @@
-﻿using FinancialApp.API.Models;
+﻿using Facillita.API.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace FinancialApp.API.Data
+namespace Facillita.API.Data
 {
     public class FinancialContext : DbContext
     {

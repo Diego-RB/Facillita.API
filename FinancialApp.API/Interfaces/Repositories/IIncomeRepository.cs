@@ -1,7 +1,7 @@
-﻿using FinancialApp.API.Data.Dtos.Income;
-using FinancialApp.API.Models;
+﻿using Facillita.API.Data.Dtos.Income;
+using Facillita.API.Models;
 
-namespace FinancialApp.API.Interfaces.Repositories
+namespace Facillita.API.Interfaces.Repositories
 {
     public interface IIncomeRepository
     {

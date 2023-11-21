@@ -1,6 +1,6 @@
-﻿using FinancialApp.API.Models.FinancialSummary;
+﻿using Facillita.API.Models.FinancialSummary;
 
-namespace FinancialApp.API.Interfaces.Repositories
+namespace Facillita.API.Interfaces.Repositories
 {
     public interface IFinancialRepository
     {

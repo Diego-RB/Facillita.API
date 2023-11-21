@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FinancialApp.Users.Data.Requests
+namespace Facillita.Users.Data.Requests
 {
     public class LoginRequest
     {
