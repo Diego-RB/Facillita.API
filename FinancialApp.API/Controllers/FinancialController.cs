@@ -15,7 +15,7 @@ namespace Facillita.API.Controllers
             _financialService = financialService;
         }
 
-        [HttpGet("Search/{year}/{month}")]
+        [HttpGet("search/{year}/{month}")]
         public IActionResult MonthSummary(int year, int month)
         {
             var summary = _financialService.MonthSummary(year, month);
