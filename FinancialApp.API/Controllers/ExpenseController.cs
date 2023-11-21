@@ -7,10 +7,10 @@ using System.Globalization;
 
 namespace Facillita.API.Controllers
 {
-    [AllowAnonymous]
     [ApiController]
     [Route("[controller]")]
-    [Authorize(Roles = "regular,admin")]
+    [AllowAnonymous]
+    //[Authorize(Roles = "regular,admin")]
     public class ExpenseController : ControllerBase
     {
         private IExpenseService _expenseService;
