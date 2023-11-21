@@ -44,7 +44,12 @@ namespace Facillita.API.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("ExpenseId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Expenses");
                 });
@@ -68,9 +73,68 @@ namespace Facillita.API.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("IncomeId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Incomes");
+                });
+
+            modelBuilder.Entity("Facillita.API.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("User");
+                });
+
+            modelBuilder.Entity("Facillita.API.Models.Expense", b =>
+                {
+                    b.HasOne("Facillita.API.Models.User", "User")
+                        .WithMany("Expenses")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Facillita.API.Models.Income", b =>
+                {
+                    b.HasOne("Facillita.API.Models.User", "User")
+                        .WithMany("Incomes")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Facillita.API.Models.User", b =>
+                {
+                    b.Navigation("Expenses");
+
+                    b.Navigation("Incomes");
                 });
 #pragma warning restore 612, 618
         }
