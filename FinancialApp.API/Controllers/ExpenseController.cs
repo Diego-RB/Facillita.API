@@ -1,15 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Globalization;
-using Facillita.API.Data.Dtos.Expense;
-using FluentResults;
+﻿using Facillita.API.Data.Dtos.Expense;
 using Facillita.API.Interfaces.Services;
+using FluentResults;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 
 namespace Facillita.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [Authorize(Roles = "regular,admin")]
+    //[Authorize(Roles = "regular,admin")]
+    [AllowAnonymous]
     public class ExpenseController : ControllerBase
     {
         private IExpenseService _expenseService;
