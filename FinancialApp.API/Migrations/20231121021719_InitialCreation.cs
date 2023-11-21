@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FinancialApp.API.Migrations
 {
-    public partial class CreateIncomeAndExpenseTables : Migration
+    public partial class InitialCreation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,7 +17,8 @@ namespace FinancialApp.API.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ExpenseName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     ExpenseAmount = table.Column<double>(type: "float", nullable: false),
-                    ExpenseDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    ExpenseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Category = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

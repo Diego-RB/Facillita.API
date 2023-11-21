@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using FinancialApp.API.Models;
+﻿using FinancialApp.API.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinancialApp.API.Data
 {

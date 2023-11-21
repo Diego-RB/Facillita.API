@@ -12,62 +12,65 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinancialApp.API.Migrations
 {
     [DbContext(typeof(FinancialContext))]
-    [Migration("20220804194028_CreateIncomeAndExpenseTables")]
-    partial class CreateIncomeAndExpenseTables
+    [Migration("20231121033848_CreateUserTAble")]
+    partial class CreateUserTAble
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.7")
+                .HasAnnotation("ProductVersion", "6.0.25")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("FinancialApp.API.Models.Expense", b =>
                 {
-                    b.Property<int>("expenseId")
+                    b.Property<int>("ExpenseId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("expenseId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ExpenseId"), 1L, 1);
 
-                    b.Property<double>("expenseAmount")
+                    b.Property<int>("Category")
+                        .HasColumnType("int");
+
+                    b.Property<double>("ExpenseAmount")
                         .HasColumnType("float");
 
-                    b.Property<DateTime>("expenseDate")
+                    b.Property<DateTime>("ExpenseDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("expenseName")
+                    b.Property<string>("ExpenseName")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.HasKey("expenseId");
+                    b.HasKey("ExpenseId");
 
                     b.ToTable("Expenses");
                 });
 
             modelBuilder.Entity("FinancialApp.API.Models.Income", b =>
                 {
-                    b.Property<int>("incomeId")
+                    b.Property<int>("IncomeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("incomeId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IncomeId"), 1L, 1);
 
-                    b.Property<double>("incomeAmount")
+                    b.Property<double>("IncomeAmount")
                         .HasColumnType("float");
 
-                    b.Property<DateTime>("incomeDate")
+                    b.Property<DateTime>("IncomeDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("incomeName")
+                    b.Property<string>("IncomeName")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.HasKey("incomeId");
+                    b.HasKey("IncomeId");
 
                     b.ToTable("Incomes");
                 });

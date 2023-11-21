@@ -42,7 +42,7 @@ builder.Services.AddSwaggerGen(option =>
             new string[]{}
         }
     });
-}); 
+});
 builder.Services.AddScoped<IIncomeService, IncomeService>();
 builder.Services.AddScoped<IExpenseService, ExpenseService>();
 builder.Services.AddScoped<IFinancialService, FinancialService>();
@@ -51,7 +51,7 @@ builder.Services.AddScoped<IExpenseRepository, ExpenseRepository>();
 builder.Services.AddScoped<IFinancialRepository, FinancialRepository>();
 //Secret Manager tool was used to hide the connection string wich can be inserted in appsettings.json
 builder.Services.AddDbContext<FinancialContext>
-    (opts => opts.UseSqlServer(builder.Configuration.GetConnectionString("FinancialConnection")));
+    (opts => opts.UseSqlServer(builder.Configuration.GetConnectionString("Facillita")));
 builder.Services.AddAuthentication(auth =>
 {
     auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -78,12 +78,12 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 //if (app.Environment.IsDevelopment())
 //{
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "FinancialApp.API V1");
-        c.RoutePrefix = String.Empty;
-    });
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "FinancialApp.API V1");
+    c.RoutePrefix = String.Empty;
+});
 //}
 
 app.UseHttpsRedirection();
