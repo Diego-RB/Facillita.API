@@ -12,6 +12,8 @@ namespace Facillita.API.Data
 
         public DbSet<Expense> Expenses { get; set; }
 
+        public DbSet<User> Users { get; set; }
+
         internal object TotalIncome(int year, int month)
         {
             throw new NotImplementedException();

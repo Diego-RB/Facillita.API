@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Facillita.API.Migrations
 {
     [DbContext(typeof(FinancialContext))]
-    [Migration("20231121062940_Init")]
-    partial class Init
+    [Migration("20231121172307_createDB")]
+    partial class createDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
