@@ -1,12 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Globalization;
-using Facillita.API.Data.Dtos.Expense;
-using FluentResults;
+﻿using Facillita.API.Data.Dtos.Expense;
 using Facillita.API.Interfaces.Services;
+using FluentResults;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 
 namespace Facillita.API.Controllers
 {
+    [AllowAnonymous]
     [ApiController]
     [Route("[controller]")]
     [Authorize(Roles = "regular,admin")]
