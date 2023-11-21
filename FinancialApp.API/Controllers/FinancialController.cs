@@ -5,10 +5,10 @@ using Newtonsoft.Json;
 
 namespace Facillita.API.Controllers
 {
+    [AllowAnonymous]
     [ApiController]
     [Route("[controller]")]
-    [AllowAnonymous]
-    //[Authorize(Roles = "regular,admin")]
+    [Authorize(Roles = "regular,admin")]
     public class FinancialController : ControllerBase
     {
         private IFinancialService _financialService;
