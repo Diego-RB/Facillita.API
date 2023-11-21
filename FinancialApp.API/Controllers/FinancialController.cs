@@ -1,14 +1,11 @@
 ﻿using Facillita.API.Interfaces.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace Facillita.API.Controllers
 {
-    [AllowAnonymous]
     [ApiController]
     [Route("[controller]")]
-    //[Authorize(Roles = "regular,admin")]
     public class FinancialController : ControllerBase
     {
         private IFinancialService _financialService;

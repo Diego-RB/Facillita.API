@@ -1,16 +1,13 @@
 ﻿using Facillita.API.Data.Dtos.Income;
 using Facillita.API.Interfaces.Services;
 using FluentResults;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 
 namespace Facillita.API.Controllers
 {
-    [AllowAnonymous]
     [ApiController]
     [Route("[controller]")]
-    //[Authorize(Roles = "regular,admin")]
     public class IncomeController : ControllerBase
     {
         private readonly IIncomeService _incomeService;

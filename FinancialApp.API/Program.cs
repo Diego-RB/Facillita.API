@@ -88,9 +88,9 @@ app.UseSwaggerUI(c =>
 
 app.UseHttpsRedirection();
 
-app.UseAuthentication();
+//app.UseAuthentication();
 
-app.UseAuthorization();
+//app.UseAuthorization();
 
 app.MapControllers();
 
