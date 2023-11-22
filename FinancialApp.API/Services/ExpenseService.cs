@@ -19,7 +19,7 @@ namespace Facillita.API.Services
         {
             _context = context;
             _mapper = mapper;
-            _repository = repository;   
+            _repository = repository;
         }
         public ReadExpenseDto AddExpense(CreateExpenseDto expenseDto)
         {
@@ -38,9 +38,9 @@ namespace Facillita.API.Services
             return null;
         }
 
-        public List<ReadExpenseDto> ListExpenses()
+        public List<ReadExpenseDto> ListExpenses(string userUId)
         {
-            List<Expense> Expenses = _context.Expenses.ToList();
+            List<Expense> Expenses = _context.Expenses.Where(expense => expense.User.UID == userUId).ToList();
             if (Expenses != null)
             {
                 List<ReadExpenseDto> readDto = _mapper.Map<List<ReadExpenseDto>>(Expenses);
@@ -60,10 +60,10 @@ namespace Facillita.API.Services
             return null;
         }
 
-        public List<ReadExpenseDto> ListExpenseByDescription(string description)
+        public List<ReadExpenseDto> ListExpenseByDescription(string userUId, string description)
         {
             List<ReadExpenseDto> ExpensesByDescription = new List<ReadExpenseDto>();
-            var queryDescription = _repository.SearchSameDescription(description);
+            var queryDescription = _repository.SearchSameDescription(userUId, description);
             if (queryDescription != null)
             {
                 foreach (var expense in queryDescription)
@@ -76,10 +76,10 @@ namespace Facillita.API.Services
             return null;
         }
 
-        public List<ReadExpenseDto> ListExpenseByMonthOfYear(int year, int month)
+        public List<ReadExpenseDto> ListExpenseByMonthOfYear(string userUId, int year, int month)
         {
             List<ReadExpenseDto> ExpensesByMonthOfYear = new List<ReadExpenseDto>();
-            var queryYearAndMonth = _repository.SearchMonthOfYear(year, month);
+            var queryYearAndMonth = _repository.SearchMonthOfYear(userUId, year, month);
             if (queryYearAndMonth != null)
             {
                 foreach (var expense in queryYearAndMonth)

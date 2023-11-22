@@ -4,9 +4,9 @@ namespace Facillita.API.Interfaces.Repositories
 {
     public interface IFinancialRepository
     {
-        public double TotalExpense(int year, int month);
-        public double TotalIncome(int year, int month);
-        public List<ExpenseByCategory> CalculateExpensesByCategory(int year, int month);
+        public double TotalExpense(string userUId, int year, int month);
+        public double TotalIncome(string userUId, int year, int month);
+        public List<ExpenseByCategory> CalculateExpensesByCategory(string userUId, int year, int month);
 
     }
 }

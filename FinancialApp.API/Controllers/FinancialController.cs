@@ -16,9 +16,9 @@ namespace Facillita.API.Controllers
         }
 
         [HttpGet("search/{year}/{month}")]
-        public IActionResult MonthSummary(int year, int month)
+        public IActionResult MonthSummary(string userUId, int year, int month)
         {
-            var summary = _financialService.MonthSummary(year, month);
+            var summary = _financialService.MonthSummary(userUId, year, month);
             string json = JsonConvert.SerializeObject(summary, Formatting.Indented);
             return Ok(json);
         }

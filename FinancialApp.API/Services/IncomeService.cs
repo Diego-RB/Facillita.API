@@ -39,9 +39,9 @@ namespace Facillita.API.Services
             return null;
         }
 
-        public List<ReadIncomeDto> ListIncomes()
+        public List<ReadIncomeDto> ListIncomes(string userUId)
         {
-            List<Income> incomes = _context.Incomes.ToList();
+            List<Income> incomes = _context.Incomes.Where(x => x.User.UID == userUId).ToList();
             if (incomes != null)
             {
                 List<ReadIncomeDto> readDto = _mapper.Map<List<ReadIncomeDto>>(incomes);
@@ -61,10 +61,10 @@ namespace Facillita.API.Services
             return null;
         }
 
-        public List<ReadIncomeDto> ListIncomeByDescription(string description)
+        public List<ReadIncomeDto> ListIncomeByDescription(string userUId, string description)
         {
             List<ReadIncomeDto> incomesByDescription = new List<ReadIncomeDto>();
-            var queryDescription = _repository.SearchSameDescription(description); 
+            var queryDescription = _repository.SearchSameDescription(userUId, description);
             if (queryDescription != null)
             {
                 foreach (var income in queryDescription)
@@ -77,10 +77,10 @@ namespace Facillita.API.Services
             return null;
         }
 
-        public List<ReadIncomeDto> ListIncomeByMonthOfYear(int year, int month)
+        public List<ReadIncomeDto> ListIncomeByMonthOfYear(string userUId, int year, int month)
         {
             List<ReadIncomeDto> incomesByMonthOfYear = new List<ReadIncomeDto>();
-            var queryYearAndMonth = _repository.SearchMonthOfYear(year, month);
+            var queryYearAndMonth = _repository.SearchMonthOfYear(userUId, year, month);
             if (queryYearAndMonth != null)
             {
                 foreach (var income in queryYearAndMonth)
@@ -128,6 +128,6 @@ namespace Facillita.API.Services
             return Result.Fail("Income not found");
         }
 
-       
+
     }
 }

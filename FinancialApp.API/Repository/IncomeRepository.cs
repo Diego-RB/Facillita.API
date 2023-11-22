@@ -26,17 +26,17 @@ namespace Facillita.API.Repository
             return _context.Incomes.FirstOrDefault(income => income.IncomeId == id);
         }
 
-        public IQueryable<Income> SearchSameDescription(string description)
+        public IQueryable<Income> SearchSameDescription(string userUId, string description)
         {
             return _context.Incomes
-                .Where(income => income.IncomeName.ToLower()
+                .Where(income => income.User.UID == userUId && income.IncomeName.ToLower()
                 .Contains(description.ToLower()));
         }
 
-        public IQueryable<Income> SearchMonthOfYear(int year, int month)
+        public IQueryable<Income> SearchMonthOfYear(string userUId, int year, int month)
         {
             return _context.Incomes
-                .Where(income => income.IncomeDate.Year == year && income.IncomeDate.Month == month);
+                .Where(income => income.User.UID == userUId && income.IncomeDate.Year == year && income.IncomeDate.Month == month);
         }
 
         public IQueryable<Income> SearchSameName(UpdateIncomeDto updatedIncomeDto)

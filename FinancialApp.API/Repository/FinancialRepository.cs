@@ -13,27 +13,27 @@ namespace Facillita.API.Repository
             _context = context;
         }
 
-        public double TotalIncome(int year, int month)
+        public double TotalIncome(string userUId, int year, int month)
         {
             return _context.Incomes
-                   .Where(income => income.IncomeDate.Year == year && income.IncomeDate.Month == month)
+                   .Where(income => income.User.UID == userUId && income.IncomeDate.Year == year && income.IncomeDate.Month == month)
                    .Select(income => income.IncomeAmount).Sum();
         }
 
-        public double TotalExpense(int year, int month)
+        public double TotalExpense(string userUId, int year, int month)
         {
             return _context.Expenses
-                    .Where(expense => expense.ExpenseDate.Year == year && expense.ExpenseDate.Month == month)
+                    .Where(expense => expense.User.UID == userUId && expense.ExpenseDate.Year == year && expense.ExpenseDate.Month == month)
                     .Select(expense => expense.ExpenseAmount).Sum();
         }
 
-        public List<ExpenseByCategory> CalculateExpensesByCategory(int year, int month)
+        public List<ExpenseByCategory> CalculateExpensesByCategory(string userUId, int year, int month)
         {
             List<ExpenseByCategory> repositoryList = new List<ExpenseByCategory>();
 
             for (int i = 0; i <= 7; i++)
             {
-                var expenseByCategory = _context.Expenses.Where(expense => expense.ExpenseDate.Year == year
+                var expenseByCategory = _context.Expenses.Where(expense => expense.User.UID == userUId && expense.ExpenseDate.Year == year
                 && expense.ExpenseDate.Month == month
                 && (int)expense.Category == i);
                 var amountByCategory = expenseByCategory.Select(expense => expense.ExpenseAmount).Sum();

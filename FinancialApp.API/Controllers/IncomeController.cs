@@ -31,9 +31,9 @@ namespace Facillita.API.Controllers
 
 
         [HttpGet]
-        public IActionResult ListIncomes()
+        public IActionResult ListIncomes(string userUId)
         {
-            List<ReadIncomeDto> readDto = _incomeService.ListIncomes();
+            List<ReadIncomeDto> readDto = _incomeService.ListIncomes(userUId);
             if (readDto != null)
                 return Ok(readDto);
 
@@ -50,20 +50,20 @@ namespace Facillita.API.Controllers
             return NotFound();
         }
 
-        [HttpGet("Search/{description}")]
-        public IActionResult ListIncomeByDescription(string description)
+        [HttpGet("search/{description}")]
+        public IActionResult ListIncomeByDescription(string userUId, string description)
         {
-            List<ReadIncomeDto> readListDto = _incomeService.ListIncomeByDescription(description);
+            List<ReadIncomeDto> readListDto = _incomeService.ListIncomeByDescription(userUId, description);
             if (readListDto != null)
                 return Ok(readListDto);
 
             return NotFound();
         }
 
-        [HttpGet("Search/{year}/{month}")]
-        public IActionResult ListIncomeByMonthOfYear(int year, int month)
+        [HttpGet("search/{year}/{month}")]
+        public IActionResult ListIncomeByMonthOfYear(string userUId, int year, int month)
         {
-            List<ReadIncomeDto> readListDto = _incomeService.ListIncomeByMonthOfYear(year, month);
+            List<ReadIncomeDto> readListDto = _incomeService.ListIncomeByMonthOfYear(userUId, year, month);
             if (readListDto != null)
                 return Ok(readListDto);
 

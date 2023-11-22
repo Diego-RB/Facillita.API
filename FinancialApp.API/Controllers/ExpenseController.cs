@@ -31,9 +31,9 @@ namespace Facillita.API.Controllers
 
 
         [HttpGet]
-        public IActionResult ListExpenses()
+        public IActionResult ListExpenses(string userUId)
         {
-            List<ReadExpenseDto> readDto = _expenseService.ListExpenses();
+            List<ReadExpenseDto> readDto = _expenseService.ListExpenses(userUId);
             if (readDto != null)
                 return Ok(readDto);
 
@@ -51,9 +51,9 @@ namespace Facillita.API.Controllers
         }
 
         [HttpGet("Search/{description}")]
-        public IActionResult ListExpenseByDescription(string description)
+        public IActionResult ListExpenseByDescription(string userUId, string description)
         {
-            List<ReadExpenseDto> readListDto = _expenseService.ListExpenseByDescription(description);
+            List<ReadExpenseDto> readListDto = _expenseService.ListExpenseByDescription(userUId, description);
             if (readListDto != null)
                 return Ok(readListDto);
 
@@ -61,9 +61,9 @@ namespace Facillita.API.Controllers
         }
 
         [HttpGet("Search/{year}/{month}")]
-        public IActionResult ListExpenseByMonthOfYear(int year, int month)
+        public IActionResult ListExpenseByMonthOfYear(string userUId, int year, int month)
         {
-            List<ReadExpenseDto> readListDto = _expenseService.ListExpenseByMonthOfYear(year, month);
+            List<ReadExpenseDto> readListDto = _expenseService.ListExpenseByMonthOfYear(userUId, year, month);
             if (readListDto != null)
                 return Ok(readListDto);
 

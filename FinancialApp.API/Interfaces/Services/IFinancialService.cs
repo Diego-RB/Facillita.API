@@ -3,7 +3,7 @@
 namespace Facillita.API.Interfaces.Services
 {
     public interface IFinancialService
-    {       
-        public JsonField MonthSummary(int year, int month);
+    {
+        public JsonField MonthSummary(string userUId, int year, int month);
     }
 }

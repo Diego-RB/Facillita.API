@@ -26,17 +26,17 @@ namespace Facillita.API.Repository
             return _context.Expenses.FirstOrDefault(expense => expense.ExpenseId == id);
         }
 
-        public IQueryable<Expense> SearchSameDescription(string description)
+        public IQueryable<Expense> SearchSameDescription(string userUId, string description)
         {
             return _context.Expenses
-                .Where(expense => expense.ExpenseName.ToLower()
+                .Where(expense => expense.User.UID == userUId && expense.ExpenseName.ToLower()
                 .Contains(description.ToLower()));
         }
 
-        public IQueryable<Expense> SearchMonthOfYear(int year, int month)
+        public IQueryable<Expense> SearchMonthOfYear(string userUId, int year, int month)
         {
             return _context.Expenses
-                .Where(expense => expense.ExpenseDate.Year == year && expense.ExpenseDate.Month == month);
+                .Where(expense => expense.User.UID == userUId && expense.ExpenseDate.Year == year && expense.ExpenseDate.Month == month);
         }
 
         public IQueryable<Expense> SearchSameName(UpdateExpenseDto updatedExpenseDto)
