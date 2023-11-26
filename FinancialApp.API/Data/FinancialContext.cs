@@ -12,7 +12,7 @@ namespace Facillita.API.Data
 
         public DbSet<Expense> Expenses { get; set; }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<User> User { get; set; }
 
         internal object TotalIncome(int year, int month)
         {

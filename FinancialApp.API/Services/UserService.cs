@@ -19,7 +19,7 @@ namespace Facillita.API.Services
 
         public void AddIncome(User user)
         {
-            _context.Users.Add(user);
+            _context.User.Add(user);
             _context.SaveChanges();
         }
 
