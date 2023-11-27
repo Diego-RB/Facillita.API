@@ -3,11 +3,8 @@ using Facillita.API.Interfaces.Repositories;
 using Facillita.API.Interfaces.Services;
 using Facillita.API.Repository;
 using Facillita.API.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -49,6 +46,7 @@ builder.Services.AddScoped<IFinancialService, FinancialService>();
 builder.Services.AddScoped<IIncomeRepository, IncomeRepository>();
 builder.Services.AddScoped<IExpenseRepository, ExpenseRepository>();
 builder.Services.AddScoped<IFinancialRepository, FinancialRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
 //Secret Manager tool was used to hide the connection string wich can be inserted in appsettings.json
 builder.Services.AddDbContext<FinancialContext>
     (opts => opts.UseSqlServer(builder.Configuration.GetConnectionString("Facillita")));

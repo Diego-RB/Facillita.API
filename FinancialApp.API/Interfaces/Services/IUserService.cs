@@ -1,11 +1,11 @@
-﻿using Facillita.API.Models;
+﻿using Facillita.API.Data.Dtos.User;
 using FluentResults;
 
 namespace Facillita.API.Interfaces.Services
 {
     public interface IUserService
     {
-        public void AddIncome(User user);
-        public Result DeleteIncome(int id);
+        public UserDto AddUser(UserDto user);
+        public Result DeleteUser(string uid);
     }
 }

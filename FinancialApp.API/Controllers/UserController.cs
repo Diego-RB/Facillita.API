@@ -1,4 +1,4 @@
-﻿using Facillita.API.Data.Dtos.Income;
+﻿using Facillita.API.Data.Dtos.User;
 using Facillita.API.Interfaces.Services;
 using FluentResults;
 using Microsoft.AspNetCore.Mvc;
@@ -10,29 +10,29 @@ namespace Facillita.API.Controllers
     [Route("User")]
     public class UserController : ControllerBase
     {
-        private readonly IIncomeService _incomeService;
+        private readonly IUserService _userService;
 
-        public UserController(IIncomeService incomeService)
+        public UserController(IUserService userService)
         {
-            _incomeService = incomeService;
+            _userService = userService;
         }
 
         [HttpPost]
-        public IActionResult AddIncome([FromBody] CreateIncomeDto incomeDto)
+        public IActionResult AddIncome([FromBody] UserDto userDto)
         {
-            ReadIncomeDto readDto = _incomeService.AddIncome(incomeDto);
+            UserDto readDto = _userService.AddUser(userDto);
 
             //If there's already an income with same description in the same month, it'll return null from AddIncome method
             if (readDto != null)
                 return Ok();
 
-            return BadRequest($"Income with same name already exists in {CultureInfo.GetCultureInfo("en-Us").DateTimeFormat.GetMonthName(incomeDto.IncomeDate.Month)}");
+            return BadRequest($"User already exists in {CultureInfo.GetCultureInfo("pt-Br").DateTimeFormat.GetMonthName(DateTime.Now.Month)}");
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteIncome(int id)
+        public IActionResult DeleteIncome(string uid)
         {
-            Result result = _incomeService.DeleteIncome(id);
+            Result result = _userService.DeleteUser(uid);
             if (result.IsFailed)
                 return NotFound();
 
