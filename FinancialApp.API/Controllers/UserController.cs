@@ -18,7 +18,7 @@ namespace Facillita.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddIncome([FromBody] UserDto userDto)
+        public IActionResult AddUser([FromBody] UserDto userDto)
         {
             UserDto readDto = _userService.AddUser(userDto);
 
@@ -30,7 +30,7 @@ namespace Facillita.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteIncome(string uid)
+        public IActionResult DeleteUser(string uid)
         {
             Result result = _userService.DeleteUser(uid);
             if (result.IsFailed)
