@@ -40,13 +40,19 @@ builder.Services.AddSwaggerGen(option =>
     //    }
     //});
 });
+
+//Service
 builder.Services.AddScoped<IIncomeService, IncomeService>();
 builder.Services.AddScoped<IExpenseService, ExpenseService>();
 builder.Services.AddScoped<IFinancialService, FinancialService>();
+builder.Services.AddScoped<IUserService, UserService>();
+
+//Repository
 builder.Services.AddScoped<IIncomeRepository, IncomeRepository>();
 builder.Services.AddScoped<IExpenseRepository, ExpenseRepository>();
 builder.Services.AddScoped<IFinancialRepository, FinancialRepository>();
-builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
 //Secret Manager tool was used to hide the connection string wich can be inserted in appsettings.json
 builder.Services.AddDbContext<FinancialContext>
     (opts => opts.UseSqlServer(builder.Configuration.GetConnectionString("Facillita")));

@@ -14,17 +14,28 @@ namespace Facillita.API.Services
         private FinancialContext _context;
         private IMapper _mapper;
         private IExpenseRepository _repository;
+        private readonly IUserRepository _userRepository;
 
-        public ExpenseService(FinancialContext context, IMapper mapper, IExpenseRepository repository)
+        public ExpenseService(
+            FinancialContext context,
+            IMapper mapper,
+            IExpenseRepository repository,
+            IUserRepository userRepository)
         {
             _context = context;
             _mapper = mapper;
             _repository = repository;
+            _userRepository = userRepository;
         }
         public ReadExpenseDto AddExpense(CreateExpenseDto expenseDto)
         {
             Expense expense = _mapper.Map<Expense>(expenseDto);
+            var user = _userRepository.GetUserByUID(expenseDto.UserUID);
 
+            if (user == null)
+                return null;
+
+            expense.User = user;
             //Verifies if an expense with same name exists in the same month 
             var searchSameName = _repository.SearchSameName(expenseDto);
 

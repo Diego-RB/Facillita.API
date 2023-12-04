@@ -16,6 +16,6 @@ namespace Facillita.API.Data.Dtos.Income
         public DateTime IncomeDate { get; set; }
 
         [Required]
-        public int UserId { get; set; }
+        public string UserUID { get; set; }
     }
 }
