@@ -1,6 +1,7 @@
-﻿using Facillita.API.Interfaces.Repositories;
+﻿using AutoMapper;
+using Facillita.API.Data.Dtos.Financial;
+using Facillita.API.Interfaces.Repositories;
 using Facillita.API.Interfaces.Services;
-using Facillita.API.Models;
 using Facillita.API.Models.FinancialSummary;
 
 namespace Facillita.API.Services
@@ -8,10 +9,12 @@ namespace Facillita.API.Services
     public class FinancialService : IFinancialService
     {
         private readonly IFinancialRepository _repository;
+        private readonly IMapper _mapper;
 
-        public FinancialService(IFinancialRepository repository)
+        public FinancialService(IFinancialRepository repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         public JsonField MonthSummary(string userUId, int year, int month)
@@ -30,9 +33,9 @@ namespace Facillita.API.Services
             };
         }
 
-        public List<Extract> GetExtract(string userUID)
+        public List<ExtractDto> GetExtract(string userUID)
         {
-            return _repository.GetExtrac(userUID);
+            return _mapper.Map<List<ExtractDto>>(_repository.GetExtrac(userUID));
         }
 
     }

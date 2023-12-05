@@ -26,8 +26,8 @@ namespace Facillita.API.Controllers
         [HttpGet("extract")]
         public IActionResult GetExtract(string userUId)
         {
-            var summary = _financialService.GetExtract(userUId);
-            string json = JsonConvert.SerializeObject(summary, Formatting.Indented);
+            var result = _financialService.GetExtract(userUId);
+            string json = JsonConvert.SerializeObject(result, Formatting.Indented);
             return Ok(json);
         }
 
