@@ -1,5 +1,6 @@
 ﻿using Facillita.API.Interfaces.Repositories;
 using Facillita.API.Interfaces.Services;
+using Facillita.API.Models;
 using Facillita.API.Models.FinancialSummary;
 
 namespace Facillita.API.Services
@@ -27,6 +28,11 @@ namespace Facillita.API.Services
                 Balance = balance,
                 List = listExpenseByCategory
             };
+        }
+
+        public List<Extract> GetExtract(string userUID)
+        {
+            return _repository.GetExtrac(userUID);
         }
 
     }

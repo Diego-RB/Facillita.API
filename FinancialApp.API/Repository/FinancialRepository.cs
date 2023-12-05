@@ -1,5 +1,6 @@
 ﻿using Facillita.API.Data;
 using Facillita.API.Interfaces.Repositories;
+using Facillita.API.Models;
 using Facillita.API.Models.FinancialSummary;
 
 namespace Facillita.API.Repository
@@ -48,6 +49,12 @@ namespace Facillita.API.Repository
             }
             return repositoryList;
 
+        }
+
+        public List<Extract> GetExtrac(string userUID)
+        {
+            var userId = _context.User.Where(x => x.UID == userUID).Select(x => x.Id).FirstOrDefault();
+            return _context.Extracts.Where(x => x.UserId == userId).ToList();
         }
     }
 }

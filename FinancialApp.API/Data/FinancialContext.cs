@@ -14,9 +14,11 @@ namespace Facillita.API.Data
 
         public DbSet<User> User { get; set; }
 
-        internal object TotalIncome(int year, int month)
+        public DbSet<Extract> Extracts { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            throw new NotImplementedException();
+            modelBuilder.Entity<Extract>().HasNoKey().ToView("vw_extract");
         }
     }
 }
