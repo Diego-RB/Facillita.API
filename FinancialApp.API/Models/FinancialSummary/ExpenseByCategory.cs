@@ -4,9 +4,9 @@ namespace Facillita.API.Models.FinancialSummary
 {
     public class ExpenseByCategory
     {
-        [JsonProperty("CategoryId")]
+        [JsonProperty("categoryId")]
         public int CategoryId { get; set; }
-        [JsonProperty("TotalCategoryIdExpense")]
+        [JsonProperty("totalCategoryIdExpense")]
         public double Total { get; set; }
     }
 }

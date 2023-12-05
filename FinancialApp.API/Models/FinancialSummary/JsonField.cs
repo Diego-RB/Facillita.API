@@ -4,13 +4,13 @@ namespace Facillita.API.Models.FinancialSummary
 {
     public class JsonField
     {
-        [JsonProperty("TotalIncome")]
+        [JsonProperty("totalIncome")]
         public double TotalIncome { get; set; }
-        [JsonProperty("TotalExpense")]
+        [JsonProperty("totalExpense")]
         public double TotalExpense { get; set; }
-        [JsonProperty("Balance")]
+        [JsonProperty("balance")]
         public double Balance { get; set; }
-        [JsonProperty("ExpensesByCategory")]
+        [JsonProperty("expensesByCategory")]
         public List<ExpenseByCategory> List { get; set; }
     }
 }
