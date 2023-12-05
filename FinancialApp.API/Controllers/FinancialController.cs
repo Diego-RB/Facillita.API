@@ -24,12 +24,19 @@ namespace Facillita.API.Controllers
         }
 
         [HttpGet("extract")]
-        public IActionResult GetExtract(string userUId)
+        public IActionResult GetExtract(string userUId, DateTime startDate, DateTime endDate)
         {
-            var result = _financialService.GetExtract(userUId);
+            var result = _financialService.GetExtract(userUId, startDate, endDate);
             string json = JsonConvert.SerializeObject(result, Formatting.Indented);
             return Ok(json);
         }
 
+        [HttpGet("extract-by-month")]
+        public IActionResult GetExtract(string userUId, int year, int month)
+        {
+            var result = _financialService.GetExtracByMonth(userUId, year, month);
+            string json = JsonConvert.SerializeObject(result, Formatting.Indented);
+            return Ok(json);
+        }
     }
 }

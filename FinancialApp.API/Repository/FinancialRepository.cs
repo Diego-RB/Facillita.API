@@ -51,10 +51,16 @@ namespace Facillita.API.Repository
 
         }
 
-        public List<Extract> GetExtrac(string userUID)
+        public List<Extract> GetExtrac(string userUID, DateTime startDate, DateTime endDate)
         {
             var userId = _context.User.Where(x => x.UID == userUID).Select(x => x.Id).FirstOrDefault();
-            return _context.Extracts.Where(x => x.UserId == userId).ToList();
+            return _context.Extracts.Where(x => x.UserId == userId && x.Date.Date >= startDate.Date && x.Date.Date <= endDate).ToList();
+        }
+
+        public List<Extract> GetExtracByMonth(string userUID, int year, int month)
+        {
+            var userId = _context.User.Where(x => x.UID == userUID).Select(x => x.Id).FirstOrDefault();
+            return _context.Extracts.Where(x => x.UserId == userId && x.Date.Year == year && x.Date.Month == month).ToList();
         }
     }
 }

@@ -8,7 +8,8 @@ namespace Facillita.API.Interfaces.Repositories
         public double TotalExpense(string userUId, int year, int month);
         public double TotalIncome(string userUId, int year, int month);
         public List<ExpenseByCategory> CalculateExpensesByCategory(string userUId, int year, int month);
-        public List<Extract> GetExtrac(string userUID);
+        public List<Extract> GetExtrac(string userUID, DateTime startDate, DateTime endDate);
+        public List<Extract> GetExtracByMonth(string userUID, int year, int month);
 
     }
 }

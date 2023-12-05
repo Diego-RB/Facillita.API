@@ -6,6 +6,7 @@ namespace Facillita.API.Interfaces.Services
     public interface IFinancialService
     {
         public JsonField MonthSummary(string userUId, int year, int month);
-        public List<ExtractDto> GetExtract(string userUID);
+        public List<ExtractDto> GetExtract(string userUID, DateTime startDate, DateTime endDate);
+        public List<ExtractDto> GetExtracByMonth(string userUID, int year, int month);
     }
 }

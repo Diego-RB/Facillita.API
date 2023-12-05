@@ -33,15 +33,15 @@ namespace Facillita.API.Services
             };
         }
 
-        public List<ExtractDto> GetExtract(string userUID)
+        public List<ExtractDto> GetExtract(string userUID, DateTime startDate, DateTime endDate)
         {
-            return _mapper.Map<List<ExtractDto>>(_repository.GetExtrac(userUID));
+            return _mapper.Map<List<ExtractDto>>(_repository.GetExtrac(userUID, startDate, endDate));
         }
 
+        public List<ExtractDto> GetExtracByMonth(string userUID, int year, int month)
+        {
+            return _mapper.Map<List<ExtractDto>>(_repository.GetExtracByMonth(userUID, year, month));
+        }
     }
-
-
-
-
 }
 
