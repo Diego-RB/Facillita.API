@@ -1,6 +1,7 @@
 ﻿using Facillita.API.Data;
 using Facillita.API.Interfaces.Repositories;
 using Facillita.API.Models;
+using Facillita.API.Models.Enum;
 using Facillita.API.Models.FinancialSummary;
 
 namespace Facillita.API.Repository
@@ -51,16 +52,24 @@ namespace Facillita.API.Repository
 
         }
 
-        public List<Extract> GetExtrac(string userUID, DateTime startDate, DateTime endDate)
+        public List<Extract> GetExtrac(string userUID, DateTime startDate, DateTime endDate, ExtractTypeEnum typeEnum)
         {
             var userId = _context.User.Where(x => x.UID == userUID).Select(x => x.Id).FirstOrDefault();
-            return _context.Extracts.Where(x => x.UserId == userId && x.Date.Date >= startDate.Date && x.Date.Date <= endDate).ToList();
+
+            if (typeEnum == 0)
+                return _context.Extracts.Where(x => x.UserId == userId && x.Date.Date >= startDate.Date && x.Date.Date <= endDate).ToList();
+
+            return _context.Extracts.Where(x => x.UserId == userId && x.TypeId == typeEnum && x.Date.Date >= startDate.Date && x.Date.Date <= endDate).ToList();
         }
 
-        public List<Extract> GetExtracByMonth(string userUID, int year, int month)
+        public List<Extract> GetExtracByMonth(string userUID, int year, int month, ExtractTypeEnum typeEnum)
         {
             var userId = _context.User.Where(x => x.UID == userUID).Select(x => x.Id).FirstOrDefault();
-            return _context.Extracts.Where(x => x.UserId == userId && x.Date.Year == year && x.Date.Month == month).ToList();
+
+            if (typeEnum == 0)
+                return _context.Extracts.Where(x => x.UserId == userId && x.Date.Year == year && x.Date.Month == month).ToList();
+
+            return _context.Extracts.Where(x => x.UserId == userId && x.TypeId == typeEnum && x.Date.Year == year && x.Date.Month == month).ToList();
         }
     }
 }

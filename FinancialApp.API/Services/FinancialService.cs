@@ -2,6 +2,7 @@
 using Facillita.API.Data.Dtos.Financial;
 using Facillita.API.Interfaces.Repositories;
 using Facillita.API.Interfaces.Services;
+using Facillita.API.Models.Enum;
 using Facillita.API.Models.FinancialSummary;
 
 namespace Facillita.API.Services
@@ -33,14 +34,14 @@ namespace Facillita.API.Services
             };
         }
 
-        public List<ExtractDto> GetExtract(string userUID, DateTime startDate, DateTime endDate)
+        public List<ExtractDto> GetExtract(string userUID, DateTime startDate, DateTime endDate, ExtractTypeEnum typeEnum)
         {
-            return _mapper.Map<List<ExtractDto>>(_repository.GetExtrac(userUID, startDate, endDate));
+            return _mapper.Map<List<ExtractDto>>(_repository.GetExtrac(userUID, startDate, endDate, typeEnum));
         }
 
-        public List<ExtractDto> GetExtracByMonth(string userUID, int year, int month)
+        public List<ExtractDto> GetExtracByMonth(string userUID, int year, int month, ExtractTypeEnum typeEnum)
         {
-            return _mapper.Map<List<ExtractDto>>(_repository.GetExtracByMonth(userUID, year, month));
+            return _mapper.Map<List<ExtractDto>>(_repository.GetExtracByMonth(userUID, year, month, typeEnum));
         }
     }
 }
