@@ -36,8 +36,7 @@ namespace Facillita.API.Controllers
         public IActionResult GetExtract(string userUId, int year, int month, ExtractTypeEnum typeEnum = 0)
         {
             var result = _financialService.GetExtracByMonth(userUId, year, month, typeEnum);
-            string json = JsonConvert.SerializeObject(result, Formatting.Indented);
-            return Ok(json);
+            return Ok(result);
         }
     }
 }
