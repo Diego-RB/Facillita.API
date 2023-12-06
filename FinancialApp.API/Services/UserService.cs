@@ -27,6 +27,11 @@ namespace Facillita.API.Services
             return _mapper.Map<UserDto>(user);
         }
 
+        public bool hasUser(string userName)
+        {
+            return _context.User.Any(x => userName.Contains(x.Username));
+        }
+
         public Result DeleteUser(string uid)
         {
             User user = _context.User.Where(x => x.UID == uid).FirstOrDefault();

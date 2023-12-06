@@ -30,18 +30,19 @@ namespace Facillita.API.Controllers
         }
 
         [HttpPost("add-mobile")]
-        public IActionResult AddUser(string username, string email, string uid)
+        public IActionResult AddUser(string username, string email, string UID)
         {
             var userDto = new UserDto()
             {
                 Username = username,
                 Email = email,
-                UID = uid
+                UID = UID
             };
             UserDto readDto = _userService.AddUser(userDto);
 
+            var hasUser = _userService.hasUser(userDto.Username);
             //If there's already an income with same description in the same month, it'll return null from AddIncome method
-            if (readDto != null)
+            if (readDto != null || hasUser)
                 return Ok();
 
             return BadRequest($"User already exists in {CultureInfo.GetCultureInfo("pt-Br").DateTimeFormat.GetMonthName(DateTime.Now.Month)}");
