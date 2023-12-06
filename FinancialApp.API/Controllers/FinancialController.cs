@@ -1,7 +1,6 @@
 ﻿using Facillita.API.Interfaces.Services;
 using Facillita.API.Models.Enum;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace Facillita.API.Controllers
 {
@@ -16,12 +15,11 @@ namespace Facillita.API.Controllers
             _financialService = financialService;
         }
 
-        [HttpGet("search/{year}/{month}")]
+        [HttpGet("search")]
         public IActionResult MonthSummary(string userUId, int year, int month)
         {
             var summary = _financialService.MonthSummary(userUId, year, month);
-            string json = JsonConvert.SerializeObject(summary, Formatting.Indented);
-            return Ok(json);
+            return Ok(summary);
         }
 
         [HttpGet("extract")]
