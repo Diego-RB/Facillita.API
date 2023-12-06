@@ -29,6 +29,29 @@ namespace Facillita.API.Controllers
             return BadRequest($"Income with same name already exists in {CultureInfo.GetCultureInfo("en-Us").DateTimeFormat.GetMonthName(incomeDto.IncomeDate.Month)}");
         }
 
+        [HttpPost("add-mobile")]
+        public IActionResult AddIncome(
+            [FromBody] string incomeName,
+            [FromBody] double incomeAmount,
+            [FromBody] DateTime incomeDate,
+            [FromBody] string userUID)
+        {
+            var incomeDto = new CreateIncomeDto()
+            {
+                IncomeName = incomeName,
+                IncomeAmount = incomeAmount,
+                IncomeDate = incomeDate,
+                UserUID = userUID
+            };
+            ReadIncomeDto readDto = _incomeService.AddIncome(incomeDto);
+
+            //If there's already an income with same description in the same month, it'll return null from AddIncome method
+            if (readDto != null)
+                return CreatedAtAction(nameof(ListIncomeById), new { Id = readDto.IncomeId }, readDto);
+
+            return BadRequest($"Income with same name already exists in {CultureInfo.GetCultureInfo("en-Us").DateTimeFormat.GetMonthName(incomeDto.IncomeDate.Month)}");
+        }
+
 
         [HttpGet]
         public IActionResult ListIncomes(string userUId)
