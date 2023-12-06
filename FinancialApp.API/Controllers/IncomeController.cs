@@ -31,10 +31,10 @@ namespace Facillita.API.Controllers
 
         [HttpPost("add-mobile")]
         public IActionResult AddIncome(
-            [FromBody] string incomeName,
-            [FromBody] double incomeAmount,
-            [FromBody] DateTime incomeDate,
-            [FromBody] string userUID)
+            string incomeName,
+            double incomeAmount,
+            DateTime incomeDate,
+            string userUID)
         {
             var incomeDto = new CreateIncomeDto()
             {
