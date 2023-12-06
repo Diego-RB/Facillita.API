@@ -31,15 +31,15 @@ namespace Facillita.API.Controllers
         }
 
         [HttpPost("add-mobile")]
-        public IActionResult AddExpense(string expenseName, double ExpenseAmount, DateTime ExpenseDate, ExpenseCategory Category, string UserUID)
+        public IActionResult AddExpense(string expenseName, double expenseAmount, DateTime expenseDate, ExpenseCategory category, string userUID)
         {
             var expenseDto = new CreateExpenseDto()
             {
                 ExpenseName = expenseName,
-                ExpenseAmount = ExpenseAmount,
-                ExpenseDate = ExpenseDate,
-                Category = Category,
-                UserUID = UserUID
+                ExpenseAmount = expenseAmount,
+                ExpenseDate = expenseDate,
+                Category = category,
+                UserUID = userUID
             };
 
             ReadExpenseDto readDto = _expenseService.AddExpense(expenseDto);
