@@ -1,5 +1,6 @@
 ﻿using Facillita.API.Data.Dtos.Expense;
 using Facillita.API.Interfaces.Services;
+using Facillita.API.Models.Enum;
 using FluentResults;
 using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
@@ -29,6 +30,26 @@ namespace Facillita.API.Controllers
             return BadRequest($"Expense with same name already exists in {CultureInfo.GetCultureInfo("en-Us").DateTimeFormat.GetMonthName(expenseDto.ExpenseDate.Month)}");
         }
 
+        [HttpPost("add-mobile")]
+        public IActionResult AddExpense(string expenseName, double ExpenseAmount, DateTime ExpenseDate, ExpenseCategory Category, string UserUID)
+        {
+            var expenseDto = new CreateExpenseDto()
+            {
+                ExpenseName = expenseName,
+                ExpenseAmount = ExpenseAmount,
+                ExpenseDate = ExpenseDate,
+                Category = Category,
+                UserUID = UserUID
+            };
+
+            ReadExpenseDto readDto = _expenseService.AddExpense(expenseDto);
+
+            //If there's already an expense with same description in the same month, it'll return null from AddExpense method
+            if (readDto != null)
+                return CreatedAtAction(nameof(ListExpenseById), new { Id = readDto.ExpenseId }, readDto);
+
+            return BadRequest($"Expense with same name already exists in {CultureInfo.GetCultureInfo("en-Us").DateTimeFormat.GetMonthName(expenseDto.ExpenseDate.Month)}");
+        }
 
         [HttpGet]
         public IActionResult ListExpenses(string userUId)

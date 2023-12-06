@@ -29,6 +29,24 @@ namespace Facillita.API.Controllers
             return BadRequest($"User already exists in {CultureInfo.GetCultureInfo("pt-Br").DateTimeFormat.GetMonthName(DateTime.Now.Month)}");
         }
 
+        [HttpPost("add-mobile")]
+        public IActionResult AddUser(string username, string email, string uid)
+        {
+            var userDto = new UserDto()
+            {
+                Username = username,
+                Email = email,
+                UID = uid
+            };
+            UserDto readDto = _userService.AddUser(userDto);
+
+            //If there's already an income with same description in the same month, it'll return null from AddIncome method
+            if (readDto != null)
+                return Ok();
+
+            return BadRequest($"User already exists in {CultureInfo.GetCultureInfo("pt-Br").DateTimeFormat.GetMonthName(DateTime.Now.Month)}");
+        }
+
         [HttpDelete("{id}")]
         public IActionResult DeleteUser(string uid)
         {
